@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>立住蕎麦 サイトデザイン 3案｜比較用インデックス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  :root { --ink:#1d1a17; --paper:#f6f2ea; --gold:#a9843f; --gray:#6f6862; --line:#e0d8c9; }
+  body { font-family:"Noto Sans JP",system-ui,sans-serif; background:var(--paper); color:var(--ink); }
+  .wrap { width:min(100% - 2.5rem, 1100px); margin-inline:auto; }
+  .head { background:var(--ink); color:var(--paper); padding:3.5rem 0 3rem; }
+  .head h1 { font-family:"Shippori Mincho",serif; font-size:clamp(1.5rem,3vw,2.1rem); letter-spacing:.16em; font-weight:500; margin-bottom:1rem; }
+  .head p { font-size:.9rem; line-height:2; color:#c3b8a4; }
+  .head .tag { display:inline-block; font-size:.68rem; letter-spacing:.2em; color:var(--gold); border:1px solid var(--gold); padding:.4em 1em; margin-bottom:1.6rem; }
+  .sec { padding:clamp(3rem,6vw,4.5rem) 0; }
+  .sec h2 { font-family:"Shippori Mincho",serif; font-size:1.35rem; letter-spacing:.14em; font-weight:500; margin-bottom:2rem; padding-bottom:.8rem; border-bottom:1px solid var(--line); }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem; }
+  @media (max-width:900px){ .grid { grid-template-columns:1fr; } }
+  .card { background:#fff; border:1px solid var(--line); display:flex; flex-direction:column; }
+  .card img { width:100%; aspect-ratio:16/10; object-fit:cover; }
+  .card__body { padding:1.6rem 1.6rem 1.8rem; display:flex; flex-direction:column; flex:1; }
+  .card__label { font-size:.68rem; letter-spacing:.2em; color:var(--gold); margin-bottom:.8em; }
+  .card__title { font-family:"Shippori Mincho",serif; font-size:1.25rem; letter-spacing:.1em; margin-bottom:.6em; }
+  .card__base { font-size:.76rem; color:var(--gray); margin-bottom:1.1em; }
+  .card__text { font-size:.86rem; line-height:1.95; color:var(--gray); margin-bottom:1.6em; }
+  .card__links { margin-top:auto; display:flex; flex-wrap:wrap; gap:.6rem; }
+  .card__links a { font-size:.78rem; font-weight:700; letter-spacing:.06em; border:1px solid var(--ink); padding:.7em 1.2em; transition:.25s; }
+  .card__links a:first-child { background:var(--ink); color:var(--paper); }
+  .card__links a:hover { background:var(--gold); border-color:var(--gold); color:var(--ink); }
+  .list { display:grid; grid-template-columns:1fr 1fr; gap:1rem 2.5rem; }
+  @media (max-width:767px){ .list { grid-template-columns:1fr; } }
+  .list li { font-size:.88rem; line-height:1.9; padding-left:1.6em; position:relative; }
+  .list li::before { content:"改"; position:absolute; left:0; top:.2em; font-size:.62rem; color:#fff; background:var(--gold); padding:.15em .35em; letter-spacing:0; }
+  .list b { font-weight:700; }
+  .note { background:#fff; border-left:3px solid var(--gold); padding:1.4rem 1.6rem; font-size:.84rem; line-height:2; color:var(--gray); }
+  .foot { background:var(--ink); color:#8d8378; font-size:.72rem; text-align:center; padding:2rem 0; letter-spacing:.06em; }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="wrap">
+    <span class="tag">DESIGN PROPOSAL</span>
+    <h1>立住蕎麦（たてずみそば）｜サイトデザイン 3案</h1>
+    <p>
+      トップ／お品書き／アクセス・営業時間 の3ページ構成で3パターン制作しました。<br>
+      写真はすべて生成画像の仮素材、文言・価格・住所・電話番号もすべて仮です。最終的にはWordPressに載せる想定で組んでいます。
+    </p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>3つの案</h2>
+    <div class="grid">
+
+      <article class="card">
+        <img src="assets/img/craftsman-hands.jpg" alt="A案のイメージ">
+        <div class="card__body">
+          <span class="card__label">PATTERN A</span>
+          <h3 class="card__title">玄 — 格式・職人</h3>
+          <p class="card__base">参考：京都 有喜屋</p>
+          <p class="card__text">墨黒の背景に縦組みの見出し。写真を大きく使い、老舗らしい落ち着きと格を出す案。単価の高いお品や夜の利用を伸ばしたいときに向きます。</p>
+          <div class="card__links">
+            <a href="pattern-a/index.html">トップ</a>
+            <a href="pattern-a/menu.html">お品書き</a>
+            <a href="pattern-a/access.html">アクセス</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="assets/img/zaru-bright.jpg" alt="B案のイメージ">
+        <div class="card__body">
+          <span class="card__label">PATTERN B</span>
+          <h3 class="card__title">明 — 明るい・実用</h3>
+          <p class="card__base">参考：手打ちそばおんたけ</p>
+          <p class="card__text">白基調に藍と朱。電話・営業時間を最上部に常時表示し、「今日やっているか」「いくらか」がすぐ分かる案。地元客・昼の回転を重視する場合の本命です。</p>
+          <div class="card__links">
+            <a href="pattern-b/index.html">トップ</a>
+            <a href="pattern-b/menu.html">お品書き</a>
+            <a href="pattern-b/access.html">アクセス</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="assets/img/buckwheat-field.jpg" alt="C案のイメージ">
+        <div class="card__body">
+          <span class="card__label">PATTERN C</span>
+          <h3 class="card__title">静 — 余白・和モダン</h3>
+          <p class="card__base">参考：信州戸隠 そばの実／いづるや</p>
+          <p class="card__text">左に縦組みのサイドナビ、写真と余白で見せる案。情報量は絞り、店の空気を伝えることを優先。遠方からの来店や、贈答・通販を将来足す場合に伸びしろがあります。</p>
+          <div class="card__links">
+            <a href="pattern-c/index.html">トップ</a>
+            <a href="pattern-c/menu.html">お品書き</a>
+            <a href="pattern-c/access.html">アクセス</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:#efeade">
+  <div class="wrap">
+    <h2>参考サイトから「直した」点（3案とも共通で実装済み）</h2>
+    <ul class="list">
+      <li><b>営業時間・電話を全ページ常時表示。</b>参考サイトの多くはフッターや下層に埋もれていました。</li>
+      <li><b>「売り切れ次第終了」を目立つ位置に明記。</b>蕎麦屋で最も多い問い合わせを先回りします。</li>
+      <li><b>PCでもナビを隠さない。</b>3ページしかないのにハンバーガーに畳む必要はありません。</li>
+      <li><b>お品書きは画像・PDFでなくテキスト＋価格。</b>スマホで拡大不要、検索にも載ります。</li>
+      <li><b>全品を載せる。</b>「他にもございます」で終わらせず、税込価格と限定の注記まで書き切ります。</li>
+      <li><b>電話番号はタップ発信、地図は埋め込み＋経路リンク。</b>スマホから1タップで動けます。</li>
+      <li><b>スマホは画面下に「電話」「地図」を固定。</b>どのページからでも来店行動に移れます。</li>
+      <li><b>重い開始演出を入れない。</b>参考サイトのロゴ演出は数秒の待ちが発生していました。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2>次に決めていただきたいこと</h2>
+    <div class="note">
+      ① 3案のうちどれを進めるか（要素の組み合わせも可能です）。<br>
+      ② 実際の写真をお持ちかどうか。今回の画像はすべて生成した仮素材のため、本番は実店舗の撮影に差し替えることを推奨します（この仮素材のまま公開することもできますが、実物と違う印象になります）。<br>
+      ③ 店名・住所・電話・営業時間・定休日・席数・駐車場・お品書きと価格の実データ。<br>
+      ④ ドメインとサーバーの有無、更新をどなたが行うか（更新する方がいればWordPress、しなければ静的でも可）。
+    </div>
+  </div>
+</section>
+
+<div class="foot">立住蕎麦 サイトデザイン提案（サンプル）　写真・文言・価格はすべて仮データです</div>
+
+</body>
+</html>

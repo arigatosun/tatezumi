@@ -1,0 +1,257 @@
+/* ================================================================
+   パターンC「静」 — そばの実／いづるや型（余白・写真主役・和モダン）
+   左サイド固定ナビ（PC）／スマホは上部ヘッダーに切替
+   ================================================================ */
+
+:root {
+  --paper: #faf8f4;
+  --paper-2: #f1ece2;
+  --ink: #2b2b2b;
+  --ink-soft: #55504a;
+  --moss: #6d7a5c;      /* 若草（アクセント） */
+  --clay: #a4623f;      /* 朱土（注意喚起） */
+  --line: #ddd6c9;
+  --serif: "Shippori Mincho", "Yu Mincho", serif;
+  --sans: "Noto Sans JP", system-ui, sans-serif;
+  --side: 210px;
+}
+
+body { font-family: var(--serif); color: var(--ink); background: var(--paper); }
+
+/* ---------- レイアウト ---------- */
+.layout { display: block; }
+.main-col { margin-left: var(--side); }
+@media (max-width: 1023px) { .main-col { margin-left: 0; } }
+
+/* ---------- サイドバー（PC） ---------- */
+.side {
+  position: fixed; left: 0; top: 0; bottom: 0; width: var(--side); z-index: 70;
+  background: var(--paper);
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; align-items: center;
+  padding: 2.6rem 0 2rem;
+}
+.side__brand { text-align: center; }
+.side__mark {
+  writing-mode: vertical-rl; font-size: 1.5rem; letter-spacing: .34em;
+  line-height: 1; margin-inline: auto; margin-bottom: 1rem;
+}
+.side__sub { font-family: var(--sans); font-size: .56rem; letter-spacing: .28em; color: var(--moss); }
+
+.side__nav {
+  margin-top: auto; margin-bottom: auto;
+  display: flex; flex-direction: row-reverse; gap: 1.5rem; justify-content: center;
+}
+.side__nav a {
+  writing-mode: vertical-rl; font-size: .95rem; letter-spacing: .28em;
+  padding: .4em .2em; transition: color .3s;
+}
+.side__nav a:hover, .side__nav a[aria-current="page"] { color: var(--moss); }
+
+.side__foot { text-align: center; font-family: var(--sans); line-height: 1.7; }
+.side__tel { display: block; font-size: .95rem; letter-spacing: .04em; }
+.side__hours { display: block; font-size: .6rem; color: var(--ink-soft); margin-top: .5em; }
+
+/* ---------- ヘッダー（スマホ・タブレット） ---------- */
+.mhead { display: none; }
+@media (max-width: 1023px) {
+  .side { display: none; }
+  .mhead {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    position: sticky; top: 0; z-index: 70;
+    background: rgba(250, 248, 244, .96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding: .8rem 1.2rem;
+  }
+  .mhead__mark { font-size: 1.15rem; letter-spacing: .2em; white-space: nowrap; }
+  .mhead__nav { display: flex; gap: 1.1rem; font-size: .82rem; letter-spacing: .08em; }
+  .mhead__nav a { white-space: nowrap; }
+  .mhead__nav a[aria-current="page"] { color: var(--moss); }
+}
+
+/* ---------- FV ---------- */
+.hero { position: relative; height: min(92vh, 800px); min-height: 460px; overflow: hidden; }
+.hero__img { width: 100%; height: 100%; object-fit: cover; }
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(30, 28, 25, .18) 0%, rgba(30, 28, 25, .05) 40%, rgba(30, 28, 25, .3) 100%);
+}
+.hero__copy {
+  position: absolute; z-index: 2; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  display: flex; flex-direction: row-reverse; gap: 1.5rem; align-items: center;
+  color: #fff; text-align: center;
+}
+.hero__title {
+  writing-mode: vertical-rl;
+  font-size: clamp(1.7rem, 2.9vw, 2.5rem); font-weight: 400;
+  letter-spacing: .42em; line-height: 1.5;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, .45);
+}
+.hero__lead {
+  writing-mode: vertical-rl;
+  font-size: clamp(.76rem, 1vw, .88rem); letter-spacing: .3em; line-height: 2.4;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, .5);
+}
+.hero__scroll {
+  position: absolute; z-index: 2; left: 50%; bottom: 2.2rem; transform: translateX(-50%);
+  font-family: var(--sans); font-size: .58rem; letter-spacing: .3em; color: #fff;
+  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+}
+.hero__scroll::after { content: ""; width: 1px; height: 42px; background: rgba(255, 255, 255, .7); }
+@media (max-width: 767px) {
+  .hero { height: 78vh; min-height: 420px; }
+  .hero__title { font-size: 1.5rem; letter-spacing: .34em; }
+  .hero__lead { font-size: .68rem; letter-spacing: .24em; }
+}
+
+/* ---------- 営業情報バー（改良点：静けさを壊さずに実用情報を1本だけ通す） ---------- */
+.infobar {
+  background: var(--paper-2); border-bottom: 1px solid var(--line);
+  font-family: var(--sans);
+}
+.infobar__inner {
+  width: min(100% - 3rem, 900px); margin-inline: auto;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .6rem 2rem;
+  padding: 1.1rem 0; font-size: .82rem; letter-spacing: .06em; color: var(--ink-soft);
+}
+.infobar strong { color: var(--ink); font-weight: 500; }
+.infobar__alert { color: var(--clay); }
+
+/* ---------- セクション ---------- */
+.section { padding: clamp(5rem, 11vw, 9rem) 0; }
+.section--tint { background: var(--paper-2); }
+.wrap { width: min(100% - 3rem, 980px); margin-inline: auto; }
+.wrap--wide { width: min(100% - 3rem, 1240px); margin-inline: auto; }
+
+.section__head { text-align: center; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.section__en { display: block; font-family: var(--sans); font-size: .6rem; letter-spacing: .42em; color: var(--moss); margin-bottom: 1.4em; }
+.section__title { font-size: clamp(1.3rem, 2.6vw, 1.8rem); font-weight: 400; letter-spacing: .32em; }
+.section__lead { margin-top: 1.8em; font-size: .92rem; line-height: 2.6; color: var(--ink-soft); letter-spacing: .08em; }
+
+/* ---------- 縦組みの引用ブロック ---------- */
+.quote { display: flex; justify-content: center; padding-block: clamp(1rem, 3vw, 2rem); }
+.quote p {
+  writing-mode: vertical-rl; font-size: clamp(1rem, 1.6vw, 1.18rem);
+  letter-spacing: .3em; line-height: 2.6; max-height: 22em;
+}
+
+/* ---------- 交互レイアウト（写真＋文） ---------- */
+.alt { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.alt + .alt { margin-top: clamp(4rem, 8vw, 7rem); }
+.alt:nth-child(even) .alt__img { order: 2; }
+.alt__img img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
+.alt__num { display: block; font-family: var(--sans); font-size: .6rem; letter-spacing: .3em; color: var(--moss); margin-bottom: 1.4em; }
+.alt__title { font-size: clamp(1.1rem, 2vw, 1.35rem); letter-spacing: .22em; margin-bottom: 1.2em; line-height: 1.8; }
+.alt__text { font-size: .9rem; line-height: 2.5; color: var(--ink-soft); letter-spacing: .06em; }
+@media (max-width: 900px) {
+  .alt { grid-template-columns: 1fr; gap: 1.5rem; }
+  .alt:nth-child(even) .alt__img { order: 0; }
+}
+
+/* ---------- 品書き抜粋（横3枚・キャプションは下） ---------- */
+.picks { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.2rem, 3vw, 2.4rem); }
+.picks figure img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.picks figcaption { margin-top: 1.2rem; text-align: center; }
+.picks__name { font-size: 1.02rem; letter-spacing: .18em; }
+.picks__price { display: block; font-family: var(--sans); font-size: .76rem; color: var(--ink-soft); margin-top: .7em; letter-spacing: .08em; }
+@media (max-width: 767px) { .picks { grid-template-columns: 1fr; gap: 2rem; } }
+
+/* ---------- ボタン ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 1em;
+  font-family: var(--sans); font-size: .76rem; letter-spacing: .24em;
+  padding: 1.15em 3em; border: 1px solid var(--ink); transition: .3s;
+}
+.btn::after { content: "→"; }
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn--moss { border-color: var(--moss); color: var(--moss); }
+.btn--moss:hover { background: var(--moss); color: var(--paper); }
+.center { text-align: center; margin-top: clamp(3rem, 6vw, 4.5rem); }
+
+/* ---------- 全幅の写真帯 ---------- */
+.band { position: relative; height: clamp(280px, 42vw, 480px); overflow: hidden; }
+.band img { width: 100%; height: 100%; object-fit: cover; }
+.band__text {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: .34em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .8);
+  background: rgba(30, 28, 25, .38);
+}
+
+/* ---------- フッター ---------- */
+.footer { background: var(--paper-2); border-top: 1px solid var(--line); padding: clamp(3.5rem, 7vw, 5rem) 0 2rem; }
+.footer__inner { display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: space-between; }
+.footer__brand { font-size: 1.2rem; letter-spacing: .28em; margin-bottom: 1.2em; }
+.footer__addr { font-family: var(--sans); font-size: .8rem; line-height: 2.2; color: var(--ink-soft); }
+.footer__nav { display: flex; flex-direction: column; gap: 1em; font-size: .9rem; letter-spacing: .2em; }
+.footer__nav a:hover { color: var(--moss); }
+.footer__copy { margin-top: 3rem; font-family: var(--sans); font-size: .66rem; letter-spacing: .1em; text-align: center; color: #9a9288; }
+
+/* ---------- スマホ固定CTA ---------- */
+.sp-cta a { background: var(--ink); color: var(--paper); font-family: var(--sans); letter-spacing: .1em; }
+.sp-cta a + a { background: var(--moss); }
+
+/* ================= 下層ページ ================= */
+
+.page-head { position: relative; height: 340px; overflow: hidden; }
+.page-head img { width: 100%; height: 100%; object-fit: cover; }
+.page-head::after { content: ""; position: absolute; inset: 0; background: rgba(30, 28, 25, .34); }
+.page-head__text {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: row-reverse; gap: 1.2rem; align-items: center; justify-content: center; color: #fff;
+}
+.page-head__ja { writing-mode: vertical-rl; font-size: clamp(1.35rem, 2.6vw, 1.8rem); font-weight: 400; letter-spacing: .38em; }
+.page-head__en { writing-mode: vertical-rl; font-family: var(--sans); font-size: .6rem; letter-spacing: .34em; color: #d8dcc9; }
+@media (max-width: 767px) { .page-head { height: 240px; } }
+
+.crumb { font-family: var(--sans); font-size: .7rem; letter-spacing: .08em; color: var(--ink-soft); padding: 1.2rem 0; }
+.crumb a:hover { color: var(--moss); }
+
+/* 品書き */
+.menu-block { margin-bottom: clamp(3.5rem, 7vw, 6rem); }
+.menu-block__head { text-align: center; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.menu-block__title { font-size: 1.2rem; letter-spacing: .32em; }
+.menu-block__en { display: block; font-family: var(--sans); font-size: .58rem; letter-spacing: .38em; color: var(--moss); margin-top: 1em; }
+
+.menu-list { max-width: 620px; margin-inline: auto; }
+.menu-item {
+  display: flex; align-items: baseline; gap: .9rem;
+  padding: 1.15em 0; border-bottom: 1px solid var(--line);
+}
+.menu-item__name { font-size: 1rem; letter-spacing: .16em; }
+.menu-item__note { display: block; font-family: var(--sans); font-size: .72rem; color: var(--ink-soft); letter-spacing: .02em; margin-top: .5em; line-height: 1.8; }
+.menu-item__dots { flex: 1 1 auto; }
+.menu-item__price { font-family: var(--sans); font-size: .88rem; white-space: nowrap; letter-spacing: .04em; }
+.menu-item__tag {
+  font-family: var(--sans); font-size: .58rem; letter-spacing: .12em;
+  color: var(--moss); border: 1px solid var(--moss); padding: .3em .7em; margin-left: .7em;
+}
+
+.notice {
+  max-width: 620px; margin-inline: auto; margin-top: clamp(2rem, 4vw, 3rem);
+  font-family: var(--sans); font-size: .78rem; line-height: 2.3; color: var(--ink-soft);
+  border-top: 1px solid var(--line); padding-top: 1.8rem;
+}
+.notice li { padding-left: 1.1em; position: relative; }
+.notice li::before { content: "—"; position: absolute; left: 0; color: var(--moss); }
+
+/* アクセス */
+.access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+@media (max-width: 900px) { .access-grid { grid-template-columns: 1fr; } }
+
+.map { position: relative; aspect-ratio: 1 / 1; background: var(--paper-2); }
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-links { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.3rem; }
+
+.hours-table th, .hours-table td {
+  font-family: var(--sans); font-size: .86rem; text-align: left;
+  padding: 1.15em .4em; border-bottom: 1px solid var(--line); letter-spacing: .04em;
+}
+.hours-table th { font-weight: 400; color: var(--moss); white-space: nowrap; padding-right: 1.5em; }
+.hours-table td em { font-style: normal; color: var(--clay); }
+
+.info-list { font-family: var(--sans); font-size: .84rem; }
+.info-list div { display: flex; gap: 1.4rem; padding: 1.05em 0; border-bottom: 1px solid var(--line); }
+.info-list dt { flex: 0 0 5.5em; color: var(--moss); font-size: .76rem; letter-spacing: .1em; }
+.info-list dd { margin: 0; color: var(--ink-soft); line-height: 1.9; }
+.info-list dd a { text-decoration: underline; text-underline-offset: 3px; }
