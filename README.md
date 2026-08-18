@@ -3,10 +3,18 @@
 知人の蕎麦屋向けサイトの提案用サンプル。**写真・文言・価格・住所・電話番号はすべて仮データ**。
 最終的に WordPress に載せる想定で、静的HTMLで先に見た目と情報設計を確定させるための素材。
 
-## 見かた
+## 公開URL（知人への共有用）
+
+**https://arigatosun.github.io/tatezumi/**
+
+- リポジトリ: https://github.com/arigatosun/tatezumi （public）
+- 全ページに `noindex,nofollow` を入れてあるため検索には出ない。URLを知る人だけが見られる状態。
+- 更新手順: ファイルを編集 → `git add <パス>` → `git commit` → `git push` → 1〜2分で反映。
+
+## 手元で見る
 
 ```bash
-cd "C:/Users/TSUCHIGA/Desktop/ritsuju-soba"
+cd "C:/Users/TSUCHIGA/Desktop/tatezumi"
 python -m http.server 8765 --bind 127.0.0.1
 # → http://127.0.0.1:8765/ を開く（比較用インデックス）
 ```
@@ -17,7 +25,7 @@ Googleマップの埋め込みを使っているため、`index.html` をダブ�
 ## 構成
 
 ```
-ritsuju-soba/
+tatezumi/
 ├── index.html            3案の比較用インデックス（知人に見せる入口）
 ├── assets/
 │   ├── css/base.css      共通リセット＋スマホ固定CTA
