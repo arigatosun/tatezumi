@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>お品書き｜そばこころ 日生中央店</title>
-<meta name="description" content="そばこころ 日生中央店のお品書き。冷たいお蕎麦・温かいお蕎麦・丼もの・一品・お飲み物を価格つきでご案内します（表示はすべて税込）。">
+<meta name="description" content="そばこころ 日生中央店のお品書き。冷たいお蕎麦・温かいお蕎麦・ミニ丼・ちょっと一品・お飲み物を価格つきでご案内します（表示はすべて税込）。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Shippori+Mincho+B1:wght@500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/base.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -41,8 +41,7 @@
 
 <main>
 
-  <div class="page-head">
-    <img src="../assets/img/tempura.jpg" alt="揚げたての天ぷら" fetchpriority="high">
+  <div class="page-head page-head--washi">
     <div class="page-head__text">
       <span class="page-head__en">MENU</span>
       <h1 class="page-head__ja">お品書き</h1>
@@ -58,35 +57,34 @@
         <a href="#cold">冷たいお蕎麦</a>
         <a href="#hot">温かいお蕎麦</a>
         <a href="#topping">トッピング</a>
-        <a href="#donburi">丼もの</a>
-        <a href="#side">一品</a>
+        <a href="#donburi">ミニ丼</a>
+        <a href="#side">ちょっと一品</a>
         <a href="#drink">お飲み物</a>
       </nav>
 
-      <!-- 【素材待ち】背景・価格の入っていない商品写真の原本を受領したら、この3枚を差し替え -->
       <div class="cards">
         <article class="card">
-          <img src="../assets/img/mori-overhead.jpg" alt="ざる" loading="lazy">
-          <div class="card__body">
-            <h3 class="card__name">ざる</h3>
-            <p class="card__price">900円 <span>税込</span></p>
-            <p class="card__text">まずはこの一枚。毎日この店で製麺しています。</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="../assets/img/tenzaru.jpg" alt="天ざる" loading="lazy">
+          <img src="../assets/img/photo/tenzaru.jpg" alt="天ざる" loading="lazy">
           <div class="card__body">
             <h3 class="card__name">天ざる</h3>
-            <p class="card__price">1,750円 <span>税込</span></p>
-            <p class="card__text">大海老二尾・南瓜・ししとう・海苔。いちばん人気のお品です。</p>
+            <p class="card__price">1,600円 <span>税込</span></p>
+            <p class="card__text">朝打ち自家製麺（1人前）、天ぷら盛り合わせ。</p>
           </div>
         </article>
         <article class="card">
-          <img src="../assets/img/kamo-nanban.jpg" alt="鴨南蛮" loading="lazy">
+          <img src="../assets/img/photo/tensoba.jpg" alt="天そば" loading="lazy">
           <div class="card__body">
-            <h3 class="card__name">鴨南蛮</h3>
-            <p class="card__price">1,750円 <span>税込</span></p>
-            <p class="card__text">温かいお蕎麦の定番。冷たい「かも汁」もございます。</p>
+            <h3 class="card__name">天そば</h3>
+            <p class="card__price">1,650円 <span>税込</span></p>
+            <p class="card__text">朝打ち自家製麺（1人前）、天ぷら盛り合わせ。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="../assets/img/photo/toriten.jpg" alt="とり天" loading="lazy">
+          <div class="card__body">
+            <h3 class="card__name">とり天（5個）</h3>
+            <p class="card__price">450円 <span>税込</span></p>
+            <p class="card__text">お蕎麦と一緒に。お持ち帰りもできます。</p>
           </div>
         </article>
       </div>
@@ -99,11 +97,12 @@
         </div>
         <table class="menu-table">
           <tbody>
-            <tr><td>ざる</td><td>900円</td></tr>
-            <tr><td>おろしそば</td><td>1,100円</td></tr>
-            <tr><td>とろろそば</td><td>1,100円</td></tr>
-            <tr><td>とり天ぶっかけ</td><td>1,350円</td></tr>
-            <tr><td>天ざる<span class="note">大海老二尾・南瓜・ししとう・海苔</span></td><td>1,750円</td></tr>
+            <!-- 価格の出典: 看板用_0810.pdf（店内掲示）。掲示にない品は食べログのメニュー写真より・要確認 -->
+            <tr><td>天ざる<span class="note">朝打ち自家製麺（1人前）、天ぷら盛り合わせ</span></td><td>1,600円</td></tr>
+            <tr><td>ざる<span class="note">朝打ち自家製麺（1人前）</span></td><td>900円</td></tr>
+            <tr><td>おろしそば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,100円</td></tr>
+            <tr><td>とろろそば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,100円</td></tr>
+            <tr><td>とり天ぶっかけ<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,350円</td></tr>
             <tr><td>かも汁<span class="tag">数量限定</span><span class="note">紀州鴨使用</span></td><td>1,700円</td></tr>
           </tbody>
         </table>
@@ -117,10 +116,10 @@
         </div>
         <table class="menu-table">
           <tbody>
-            <tr><td>ねぎそば</td><td>1,100円</td></tr>
-            <tr><td>おろし肉そば</td><td>1,450円</td></tr>
-            <tr><td>鴨南蛮</td><td>1,750円</td></tr>
-            <tr><td>天そば</td><td>1,800円</td></tr>
+            <tr><td>天そば<span class="note">朝打ち自家製麺（1人前）、天ぷら盛り合わせ</span></td><td>1,650円</td></tr>
+            <tr><td>鴨南蛮<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,650円</td></tr>
+            <tr><td>ねぎそば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,000円</td></tr>
+            <tr><td>おろし肉そば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,000円</td></tr>
           </tbody>
         </table>
       </div>
@@ -144,32 +143,32 @@
 
       <div class="menu-block" id="donburi">
         <div class="menu-block__head">
-          <h2 class="menu-block__title">丼もの</h2>
+          <h2 class="menu-block__title">ミニ丼</h2>
           <span class="menu-block__bar"></span>
           <span class="menu-block__en">DONBURI</span>
         </div>
         <table class="menu-table">
           <tbody>
-            <tr><td>天丼<span class="note">お米は玄米から精米してお出ししています</span></td><td>700円</td></tr>
-            <tr><td>牛丼</td><td>700円</td></tr>
-            <tr><td>ネギトロ丼</td><td>900円</td></tr>
+            <tr><td>天丼<span class="note">ミニ丼、香の物付き／お米は「いのちの壱」</span></td><td>550円</td></tr>
+            <tr><td>牛丼<span class="note">ミニ丼、香の物付き／お米は「いのちの壱」</span></td><td>550円</td></tr>
+            <tr><td>ネギトロ丼<span class="note">ミニ丼、香の物付き／お米は「いのちの壱」</span></td><td>550円</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="menu-block" id="side">
         <div class="menu-block__head">
-          <h2 class="menu-block__title">一品</h2>
+          <h2 class="menu-block__title">ちょっと一品</h2>
           <span class="menu-block__bar"></span>
           <span class="menu-block__en">SIDE</span>
         </div>
         <table class="menu-table">
           <tbody>
+            <tr><td>とり天（5個）<span class="tag tag--navy">お持ち帰り可</span></td><td>450円</td></tr>
+            <tr><td>とり天（2個）<span class="tag tag--navy">お持ち帰り可</span></td><td>300円</td></tr>
+            <tr><td>揚出し豆腐</td><td>400円</td></tr>
             <tr><td>天ぷら盛り合わせ<span class="tag tag--navy">お持ち帰り可</span><span class="note">大海老二尾・南瓜・ししとう・海苔</span></td><td>900円</td></tr>
             <tr><td>大海老天（一尾）<span class="tag tag--navy">お持ち帰り可</span></td><td>350円</td></tr>
-            <tr><td>とり天（二個）<span class="tag tag--navy">お持ち帰り可</span></td><td>300円</td></tr>
-            <tr><td>とり天（五個）<span class="tag tag--navy">お持ち帰り可</span></td><td>550円</td></tr>
-            <tr><td>揚げ出し豆腐</td><td>400円</td></tr>
             <tr><td>だし巻き玉子</td><td>300円</td></tr>
           </tbody>
         </table>
@@ -210,9 +209,10 @@
 
       <ul class="notice">
         <li>表示価格はすべて税込です。</li>
-        <li>天ぷら盛り合わせ・大海老天・とり天はお持ち帰りいただけます。</li>
+        <li>そば粉は島根県三瓶在来種を使用し、毎朝この店で打っています。</li>
+        <li>丼もののお米は「いのちの壱」を使用しています。</li>
         <li>ご予約は承っておりません。先着順でのご案内となります。</li>
-        <li>季節のおすすめは時期により入れ替わります。</li>
+        <li>価格は店内掲示（2026年8月）をもとにしています。掲示にない一部のお品は確認中です。</li>
       </ul>
 
       <p class="center"><a class="btn btn--primary" href="access.html">アクセス・営業時間を見る</a></p>
@@ -239,7 +239,7 @@
       <a href="access.html">アクセス・営業時間</a>
     </nav>
   </div>
-  <p class="footer__copy">© そばこころ　※本サイトはデザイン確認用のサンプルです（写真はイメージ）</p>
+  <p class="footer__copy">© そばこころ　※本サイトはデザイン確認用のサンプルです</p>
 </footer>
 
 <div class="sp-cta">
