@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ボタン・本文の書体候補｜そばこころ D案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>
+  :root {
+    --ink:#221f1c; --ink-soft:#4b443d; --gray:#6d655c; --washi:#fbfaf4; --washi-warm:#f5f1e4;
+    --green:#6f9a3a; --green-dk:#4e7326; --green-pale:#dcebbd; --line:#e2dccb; --alert-bg:#f3f7e8;
+    --mincho:"Shippori Mincho B1",serif;
+  }
+  body { background:var(--washi); color:var(--ink); line-height:2; font-size:17px;
+         font-family:"Noto Sans JP",sans-serif; }
+  .wrap { width:min(100% - 2.5rem, 1080px); margin-inline:auto; }
+
+  .head { background:var(--ink); color:#f2ece1; padding:2.6rem 0 2.2rem; }
+  .head h1 { font-family:var(--mincho); font-weight:800; font-size:1.7rem; letter-spacing:.08em; margin-bottom:.7rem; }
+  .head p { font-size:.95rem; color:#c8c0b3; line-height:1.9; }
+
+  .sec { padding:2.4rem 0 3rem; }
+
+  .cand { background:#fff; border:1px solid var(--line); border-radius:14px;
+          overflow:hidden; margin-bottom:1.6rem; }
+  .cand__head { display:flex; align-items:baseline; gap:.9rem; flex-wrap:wrap;
+                padding:1rem 1.4rem; background:var(--washi-warm); border-bottom:1px solid var(--line); }
+  .cand__key { background:var(--green); color:#fff; font-weight:700; font-size:.9rem;
+               padding:.15rem .9rem; border-radius:999px; letter-spacing:.1em; }
+  .cand__name { font-weight:700; font-size:1.05rem; }
+  .cand__desc { font-size:.9rem; color:var(--gray); }
+  .cand__body { padding:1.6rem 1.6rem 2rem; }
+
+  /* 実物と同じパーツ */
+  .gnav { display:flex; gap:1.8rem; padding-bottom:1.2rem; margin-bottom:1.4rem;
+          border-bottom:3px solid var(--green-pale); flex-wrap:wrap; }
+  .gnav a { font-weight:500; font-size:1.05rem; padding:.35rem 0; border-bottom:3px solid transparent; }
+  .gnav a.on { border-bottom-color:var(--green); color:var(--green-dk); }
+
+  .btns { display:flex; gap:.9rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5em;
+         min-height:3.4rem; padding:.6rem 2.2rem; border-radius:999px;
+         font-weight:700; font-size:1.05rem; letter-spacing:.06em; border:2px solid transparent; }
+  .btn--primary { background:var(--green); color:#fff; }
+  .btn--outline { background:#fff; color:var(--ink); border-color:var(--line); }
+  .btn--tel { background:var(--ink); color:#fff; }
+
+  .status { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-bottom:1.4rem; }
+  .status__card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:1.4rem 1.2rem; text-align:center; }
+  .status__card--alert { background:var(--alert-bg); border-color:#cddfa8; }
+  .status__label { font-weight:700; font-size:.95rem; color:var(--gray); letter-spacing:.1em; margin-bottom:.4rem; }
+  .status__main { font-family:var(--mincho); font-weight:600; font-size:1.75rem; line-height:1.45; }
+  .status__main em { font-style:normal; color:var(--green-dk); font-size:1.5rem; }
+  .status__sub { margin-top:.5rem; font-size:.95rem; line-height:1.85; color:var(--ink-soft); }
+
+  .ftitle { font-family:var(--mincho); font-weight:800; font-size:1.5rem; line-height:1.6; margin-bottom:.5rem; }
+  .ftext { font-size:1.02rem; line-height:2.05; color:var(--ink-soft); }
+
+  /* 案ごとの書体（見出しと価格の明朝は固定、それ以外を差し替え） */
+  .ui-now  { font-family:"M PLUS Rounded 1c",sans-serif; }
+  .ui-noto { font-family:"Noto Sans JP",sans-serif; }
+  .ui-zen  { font-family:"Zen Kaku Gothic New",sans-serif; }
+  .ui-biz  { font-family:"BIZ UDPGothic",sans-serif; }
+  .ui-min  { font-family:"Shippori Mincho B1",serif; }
+  .ui-min .btn, .ui-min .gnav a, .ui-min .status__label { font-weight:600; }
+
+  .foot { background:var(--ink); color:#a99f92; font-size:.82rem; text-align:center; padding:1.6rem 0; }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="wrap">
+    <h1>ボタン・ナビ・本文の書体候補</h1>
+    <p>
+      見出しと価格の「しっぽり明朝 B1」はそのままに、<b style="color:#e8dfd0">ボタン・ナビ・説明文の書体だけ</b>を差し替えた比較です。<br>
+      いまボタンが浮いて見えるのは、明朝の見出しに対して本文とボタンが丸ゴシックだからです。ボタンだけでなく本文も同じ書体なので、まとめて見比べられるようにしています。
+    </p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+
+    <article class="cand ui-noto">
+      <div class="cand__head">
+        <span class="cand__key">あ</span>
+        <span class="cand__name">Noto Sans JP</span>
+        <span class="cand__desc">明朝と組むときの定番の角ゴシック。クセがなく、どの環境でも同じに出ます。</span>
+      </div>
+      <div class="cand__body">
+        <nav class="gnav"><a class="on">ホーム</a><a>お品書き</a><a>アクセス・営業時間</a></nav>
+        <div class="btns">
+          <span class="btn btn--primary">お品書きをすべて見る</span>
+          <span class="btn btn--outline">地図・行き方を見る</span>
+          <span class="btn btn--tel">☎ 072-764-7366</span>
+        </div>
+        <div class="status">
+          <div class="status__card">
+            <p class="status__label">営業時間</p>
+            <p class="status__main">11:00 – 21:00</p>
+            <p class="status__sub">通し営業です。ラストオーダーは 20:00。</p>
+          </div>
+          <div class="status__card status__card--alert">
+            <p class="status__label">ご予約について</p>
+            <p class="status__main"><em>ご予約はできません</em></p>
+            <p class="status__sub">先着順でご案内しています。</p>
+          </div>
+        </div>
+        <p class="ftitle">島根県三瓶（さんべ）在来種のそば粉</p>
+        <p class="ftext">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </article>
+
+    <article class="cand ui-zen">
+      <div class="cand__head">
+        <span class="cand__key">い</span>
+        <span class="cand__name">Zen Kaku Gothic New</span>
+        <span class="cand__desc">角ゴシックですが線に柔らかさがあり、和文の形が整っています。</span>
+      </div>
+      <div class="cand__body">
+        <nav class="gnav"><a class="on">ホーム</a><a>お品書き</a><a>アクセス・営業時間</a></nav>
+        <div class="btns">
+          <span class="btn btn--primary">お品書きをすべて見る</span>
+          <span class="btn btn--outline">地図・行き方を見る</span>
+          <span class="btn btn--tel">☎ 072-764-7366</span>
+        </div>
+        <div class="status">
+          <div class="status__card">
+            <p class="status__label">営業時間</p>
+            <p class="status__main">11:00 – 21:00</p>
+            <p class="status__sub">通し営業です。ラストオーダーは 20:00。</p>
+          </div>
+          <div class="status__card status__card--alert">
+            <p class="status__label">ご予約について</p>
+            <p class="status__main"><em>ご予約はできません</em></p>
+            <p class="status__sub">先着順でご案内しています。</p>
+          </div>
+        </div>
+        <p class="ftitle">島根県三瓶（さんべ）在来種のそば粉</p>
+        <p class="ftext">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </article>
+
+    <article class="cand ui-biz">
+      <div class="cand__head">
+        <span class="cand__key">う</span>
+        <span class="cand__name">BIZ UDPGothic</span>
+        <span class="cand__desc">ユニバーサルデザイン書体。ご年配の方にいちばん読みやすい形です。</span>
+      </div>
+      <div class="cand__body">
+        <nav class="gnav"><a class="on">ホーム</a><a>お品書き</a><a>アクセス・営業時間</a></nav>
+        <div class="btns">
+          <span class="btn btn--primary">お品書きをすべて見る</span>
+          <span class="btn btn--outline">地図・行き方を見る</span>
+          <span class="btn btn--tel">☎ 072-764-7366</span>
+        </div>
+        <div class="status">
+          <div class="status__card">
+            <p class="status__label">営業時間</p>
+            <p class="status__main">11:00 – 21:00</p>
+            <p class="status__sub">通し営業です。ラストオーダーは 20:00。</p>
+          </div>
+          <div class="status__card status__card--alert">
+            <p class="status__label">ご予約について</p>
+            <p class="status__main"><em>ご予約はできません</em></p>
+            <p class="status__sub">先着順でご案内しています。</p>
+          </div>
+        </div>
+        <p class="ftitle">島根県三瓶（さんべ）在来種のそば粉</p>
+        <p class="ftext">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </article>
+
+    <article class="cand ui-min">
+      <div class="cand__head">
+        <span class="cand__key">え</span>
+        <span class="cand__name">しっぽり明朝 B1（全面明朝）</span>
+        <span class="cand__desc">ボタンも本文も見出しと同じ明朝に。いちばん和の統一感が出ますが、小さい字はやや読みにくくなります。</span>
+      </div>
+      <div class="cand__body">
+        <nav class="gnav"><a class="on">ホーム</a><a>お品書き</a><a>アクセス・営業時間</a></nav>
+        <div class="btns">
+          <span class="btn btn--primary">お品書きをすべて見る</span>
+          <span class="btn btn--outline">地図・行き方を見る</span>
+          <span class="btn btn--tel">☎ 072-764-7366</span>
+        </div>
+        <div class="status">
+          <div class="status__card">
+            <p class="status__label">営業時間</p>
+            <p class="status__main">11:00 – 21:00</p>
+            <p class="status__sub">通し営業です。ラストオーダーは 20:00。</p>
+          </div>
+          <div class="status__card status__card--alert">
+            <p class="status__label">ご予約について</p>
+            <p class="status__main"><em>ご予約はできません</em></p>
+            <p class="status__sub">先着順でご案内しています。</p>
+          </div>
+        </div>
+        <p class="ftitle">島根県三瓶（さんべ）在来種のそば粉</p>
+        <p class="ftext">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </article>
+
+    <article class="cand ui-now">
+      <div class="cand__head">
+        <span class="cand__key" style="background:#6d655c">現状</span>
+        <span class="cand__name">M PLUS Rounded 1c（丸ゴシック）</span>
+        <span class="cand__desc">いま使っているもの。ボタンが浮いて見える原因です。比較用。</span>
+      </div>
+      <div class="cand__body">
+        <nav class="gnav"><a class="on">ホーム</a><a>お品書き</a><a>アクセス・営業時間</a></nav>
+        <div class="btns">
+          <span class="btn btn--primary">お品書きをすべて見る</span>
+          <span class="btn btn--outline">地図・行き方を見る</span>
+          <span class="btn btn--tel">☎ 072-764-7366</span>
+        </div>
+        <div class="status">
+          <div class="status__card">
+            <p class="status__label">営業時間</p>
+            <p class="status__main">11:00 – 21:00</p>
+            <p class="status__sub">通し営業です。ラストオーダーは 20:00。</p>
+          </div>
+          <div class="status__card status__card--alert">
+            <p class="status__label">ご予約について</p>
+            <p class="status__main"><em>ご予約はできません</em></p>
+            <p class="status__sub">先着順でご案内しています。</p>
+          </div>
+        </div>
+        <p class="ftitle">島根県三瓶（さんべ）在来種のそば粉</p>
+        <p class="ftext">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="foot">そばこころ D案 UI書体候補（社内確認用）</div>
+
+</body>
+</html>
