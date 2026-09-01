@@ -46,10 +46,6 @@ body {
 .wrap { width: min(100% - 2.4rem, var(--wrap)); margin-inline: auto; }
 .center { text-align: center; }
 
-/* 狭い画面でだけ改行する（住所などが1文字だけ折り返すのを防ぐ） */
-.br-sp { display: none; }
-@media (max-width: 560px) { .br-sp { display: inline; } }
-
 .section { padding-block: clamp(3rem, 6vw, 4.75rem); }
 .section--soft { background: var(--washi-warm); }
 
@@ -224,51 +220,25 @@ body {
 .news__date { color: var(--gray); font-size: .92rem; font-family: var(--mincho); }
 .news__text a { color: var(--green-dk); text-decoration: underline; font-weight: 700; }
 
-/* ---------- 営業情報カード ---------- */
-.status { padding-block: clamp(2.2rem, 5vw, 3.2rem); }
-.status__grid {
-  display: grid; gap: 1.2rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+/* ---------- 営業情報の帯（ヒーロー直下・1行に集約） ---------- */
+.hours-bar {
+  background: var(--washi-warm);
+  border-bottom: 1px solid var(--line);
 }
-.status__card {
-  background: var(--white); border: 1px solid var(--line); border-radius: var(--r);
-  padding: 1.6rem 1.5rem; text-align: center;
-  box-shadow: 0 2px 10px rgba(60, 55, 30, .05);
+.hours-bar__inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: .3rem 2.2rem; padding-block: 1.15rem;
+  font-size: 1.05rem; line-height: 1.7; text-align: center;
 }
-.status__label {
-  font-family: var(--sans); font-weight: 700; font-size: .95rem;
-  color: var(--gray); letter-spacing: .1em; margin-bottom: .5rem;
+.hours-bar strong {
+  font-family: var(--mincho); font-weight: 600; font-size: 1.22rem; color: var(--ink);
 }
-.status__main {
-  font-family: var(--mincho); font-weight: 600;
-  font-size: clamp(1.55rem, 3.6vw, 2rem); line-height: 1.45; color: var(--ink);
+.hours-bar a {
+  font-family: var(--mincho); font-weight: 600; font-size: 1.22rem;
+  color: var(--green-dk); letter-spacing: .02em;
 }
-.status__main em { font-style: normal; color: var(--green-dk); }
-.status__main a { color: var(--green-dk); }
-.status__sub {
-  margin-top: .6rem; font-size: .95rem; line-height: 1.85; color: var(--ink-soft);
-  text-wrap: pretty;
-}
-.status__card--alert { background: var(--alert-bg); border-color: #cddfa8; }
-.status__card--alert .status__main { font-size: clamp(1.35rem, 3vw, 1.6rem); letter-spacing: 0; }
-
-/* 場所 */
-.place {
-  margin-top: 1.2rem; text-align: center;
-  background: var(--white); border: 1px solid var(--line); border-radius: var(--r);
-  padding: 1.7rem 1.5rem;
-}
-.place__label {
-  font-family: var(--sans); font-weight: 700; font-size: .95rem;
-  color: var(--gray); letter-spacing: .1em; margin-bottom: .5rem;
-}
-.place__addr {
-  font-family: var(--mincho); font-weight: 500;
-  font-size: clamp(1.15rem, 2.6vw, 1.4rem); line-height: 1.7;
-}
-.place__addr strong { font-weight: 600; font-size: 1.1em; }
-.place__sub {
-  font-size: .95rem; color: var(--ink-soft); margin: .4rem 0 1.1rem; text-wrap: pretty;
+@media (max-width: 640px) {
+  .hours-bar__inner { flex-direction: column; gap: .35rem; padding-block: 1rem; }
 }
 
 /* ---------- こだわり ---------- */
