@@ -1,0 +1,5 @@
+# 作業用（Playwright の出力・確認用スクリーンショット）
+.playwright-mcp/
+d-*.png
+b-access-map.png
+idx.png
