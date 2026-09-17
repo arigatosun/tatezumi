@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>こだわりセクションの背景・比較</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="style.css">
+<style>
+.sample-bar {
+  background: #3c3720; color: #fff; text-align: center;
+  padding: .75rem 1rem; font-size: .96rem; font-weight: 700; letter-spacing: .04em;
+}
+.bg-label {
+  background: #fff; border-bottom: 1px solid var(--line);
+  padding: .85rem clamp(1rem, 4vw, 2rem);
+  font-weight: 700; font-size: 1.05rem;
+}
+.bg-label small { font-weight: 400; color: var(--gray); margin-left: .8rem; font-size: .9rem; }
+
+/* A: 現在（看板の市松画像をそのままタイル） */
+.bg-a { background-image: url(../assets/img/photo/ichimatsu.jpg); background-size: 520px auto; background-position: center; }
+
+/* B: 現在の市松に生成りのベールを重ねて色みを弱める */
+.bg-b {
+  background-image: linear-gradient(rgba(251, 250, 244, .66), rgba(251, 250, 244, .66)),
+                    url(../assets/img/photo/ichimatsu.jpg);
+  background-size: auto, 520px auto;
+  background-position: center, center;
+}
+
+/* C: CSSで描く市松。マス目を大きく、色差を小さく */
+.bg-c {
+  background-color: #f6faee;
+  background-image: conic-gradient(#e8f1d6 0 25%, transparent 0 50%, #e8f1d6 0 75%, transparent 0);
+  background-size: 160px 160px;
+}
+
+/* D: 無地の淡い若草 */
+.bg-d { background-color: #eef4e2; }
+
+/* E: 生成りの和紙（緑を使わない） */
+.bg-e { background-color: var(--washi-warm); }
+
+/* F: 細い縦縞 */
+.bg-f { background: repeating-linear-gradient(90deg, #edf3e1 0 7px, #f7faf0 7px 21px); }
+
+/* 比較しやすいよう、各サンプルの縦を詰める */
+.bg-demo { padding: clamp(2rem, 4vw, 2.8rem) 0; }
+.bg-demo .feature { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<div class="sample-bar">こだわりセクションの背景・6案の比較</div>
+
+<div class="bg-label">A案：現在のまま<small>看板の市松画像をそのままタイル表示</small></div>
+<section class="section bg-demo bg-a">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__en">OUR CRAFT</span>
+      <h2 class="section__title">そばこころのこだわり</h2>
+    </div>
+    <div class="feature">
+      <div class="feature__img"><img src="../assets/img/photo/negisoba.jpg" alt="ねぎそば"></div>
+      <div>
+        <span class="feature__num">01</span>
+        <h3 class="feature__title">島根県三瓶（さんべ）在来種のそば粉</h3>
+        <p class="feature__text">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-label">B案：現在の市松を薄める<small>同じ画像に生成りのベールを重ねて、色みだけ弱めた</small></div>
+<section class="section bg-demo bg-b">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__en">OUR CRAFT</span>
+      <h2 class="section__title">そばこころのこだわり</h2>
+    </div>
+    <div class="feature">
+      <div class="feature__img"><img src="../assets/img/photo/negisoba.jpg" alt="ねぎそば"></div>
+      <div>
+        <span class="feature__num">01</span>
+        <h3 class="feature__title">島根県三瓶（さんべ）在来種のそば粉</h3>
+        <p class="feature__text">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-label">C案：市松のまま、マス目を大きく<small>柄は残しつつ、細かさと金箔をなくして落ち着かせた</small></div>
+<section class="section bg-demo bg-c">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__en">OUR CRAFT</span>
+      <h2 class="section__title">そばこころのこだわり</h2>
+    </div>
+    <div class="feature">
+      <div class="feature__img"><img src="../assets/img/photo/negisoba.jpg" alt="ねぎそば"></div>
+      <div>
+        <span class="feature__num">01</span>
+        <h3 class="feature__title">島根県三瓶（さんべ）在来種のそば粉</h3>
+        <p class="feature__text">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-label">D案：無地の淡い若草<small>柄をやめて、看板の色だけ残す</small></div>
+<section class="section bg-demo bg-d">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__en">OUR CRAFT</span>
+      <h2 class="section__title">そばこころのこだわり</h2>
+    </div>
+    <div class="feature">
+      <div class="feature__img"><img src="../assets/img/photo/negisoba.jpg" alt="ねぎそば"></div>
+      <div>
+        <span class="feature__num">01</span>
+        <h3 class="feature__title">島根県三瓶（さんべ）在来種のそば粉</h3>
+        <p class="feature__text">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-label">E案：生成りの和紙<small>緑を使わず、料理写真を最も引き立てる</small></div>
+<section class="section bg-demo bg-e">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__en">OUR CRAFT</span>
+      <h2 class="section__title">そばこころのこだわり</h2>
+    </div>
+    <div class="feature">
+      <div class="feature__img"><img src="../assets/img/photo/negisoba.jpg" alt="ねぎそば"></div>
+      <div>
+        <span class="feature__num">01</span>
+        <h3 class="feature__title">島根県三瓶（さんべ）在来種のそば粉</h3>
+        <p class="feature__text">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-label">F案：細い縦縞<small>和の雰囲気は残しつつ、市松より主張が弱い</small></div>
+<section class="section bg-demo bg-f">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__en">OUR CRAFT</span>
+      <h2 class="section__title">そばこころのこだわり</h2>
+    </div>
+    <div class="feature">
+      <div class="feature__img"><img src="../assets/img/photo/negisoba.jpg" alt="ねぎそば"></div>
+      <div>
+        <span class="feature__num">01</span>
+        <h3 class="feature__title">島根県三瓶（さんべ）在来種のそば粉</h3>
+        <p class="feature__text">そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

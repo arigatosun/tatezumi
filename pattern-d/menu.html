@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/base.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260917">
 </head>
 <body>
 
@@ -54,39 +54,52 @@
     <div class="wrap">
 
       <nav class="menu-jump">
-        <a href="#cold">冷たいお蕎麦</a>
         <a href="#hot">温かいお蕎麦</a>
+        <a href="#cold">冷たいお蕎麦</a>
         <a href="#topping">トッピング</a>
         <a href="#donburi">ミニ丼</a>
         <a href="#side">ちょっと一品</a>
         <a href="#drink">お飲み物</a>
       </nav>
 
-      <div class="cards">
-        <article class="card">
-          <img src="../assets/img/photo/tenzaru.jpg" alt="天ざる" loading="lazy">
-          <div class="card__body">
-            <h3 class="card__name">天ざる</h3>
-            <p class="card__price">1,600円 <span>税込</span></p>
-            <p class="card__text">朝打ち自家製麺（1人前）、天ぷら盛り合わせ。</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="../assets/img/photo/tensoba.jpg" alt="天そば" loading="lazy">
-          <div class="card__body">
-            <h3 class="card__name">天そば</h3>
-            <p class="card__price">1,650円 <span>税込</span></p>
-            <p class="card__text">朝打ち自家製麺（1人前）、天ぷら盛り合わせ。</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="../assets/img/photo/toriten.jpg" alt="とり天" loading="lazy">
-          <div class="card__body">
-            <h3 class="card__name">とり天（5個）</h3>
-            <p class="card__price">450円 <span>税込</span></p>
-            <p class="card__text">お蕎麦と一緒に。お持ち帰りもできます。</p>
-          </div>
-        </article>
+      <!-- D案では上部のおすすめカードを置かず、各カテゴリで「写真あり＝カード」「写真なし＝表」に振り分ける -->
+
+      <div class="menu-block" id="hot">
+        <div class="menu-block__head">
+          <h2 class="menu-block__title">温かいお蕎麦</h2>
+          <span class="menu-block__bar"></span>
+          <span class="menu-block__en">HOT</span>
+        </div>
+        <div class="cards cards--big">
+          <article class="card">
+            <img src="../assets/img/photo/tensoba.jpg" alt="天そば" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">天そば</h3>
+              <p class="card__price">1,650円 <span>税込</span></p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="../assets/img/photo/kamo-nanban.jpg" alt="鴨南蛮" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">鴨南蛮</h3>
+              <p class="card__price">1,650円 <span>税込</span></p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="../assets/img/photo/negisoba.jpg" alt="ねぎそば" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">ねぎそば</h3>
+              <p class="card__price">1,000円 <span>税込</span></p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="../assets/img/photo/oroshi-niku-soba.jpg" alt="おろし肉そば" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">おろし肉そば</h3>
+              <p class="card__price">1,000円 <span>税込</span></p>
+            </div>
+          </article>
+        </div>
       </div>
 
       <div class="menu-block" id="cold">
@@ -95,31 +108,24 @@
           <span class="menu-block__bar"></span>
           <span class="menu-block__en">COLD</span>
         </div>
+        <div class="cards cards--big">
+          <article class="card">
+            <img src="../assets/img/photo/tenzaru.jpg" alt="天ざる" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">天ざる</h3>
+              <p class="card__price">1,600円 <span>税込</span></p>
+            </div>
+          </article>
+        </div>
+        <p class="rest-label">ほかの冷たいお蕎麦</p>
         <table class="menu-table">
           <tbody>
             <!-- 価格の出典: 看板用_0810.pdf（店内掲示）。掲示にない品は食べログのメニュー写真より・要確認 -->
-            <tr><td>天ざる<span class="note">朝打ち自家製麺（1人前）、天ぷら盛り合わせ</span></td><td>1,600円</td></tr>
-            <tr><td>ざる<span class="note">朝打ち自家製麺（1人前）</span></td><td>900円</td></tr>
-            <tr><td>おろしそば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,100円</td></tr>
-            <tr><td>とろろそば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,100円</td></tr>
-            <tr><td>とり天ぶっかけ<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,350円</td></tr>
+            <tr><td>ざる</td><td>900円</td></tr>
+            <tr><td>おろしそば</td><td>1,100円</td></tr>
+            <tr><td>とろろそば</td><td>1,100円</td></tr>
+            <tr><td>とり天ぶっかけ</td><td>1,350円</td></tr>
             <tr><td>かも汁<span class="tag">数量限定</span><span class="note">紀州鴨使用</span></td><td>1,700円</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="menu-block" id="hot">
-        <div class="menu-block__head">
-          <h2 class="menu-block__title">温かいお蕎麦</h2>
-          <span class="menu-block__bar"></span>
-          <span class="menu-block__en">HOT</span>
-        </div>
-        <table class="menu-table">
-          <tbody>
-            <tr><td>天そば<span class="note">朝打ち自家製麺（1人前）、天ぷら盛り合わせ</span></td><td>1,650円</td></tr>
-            <tr><td>鴨南蛮<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,650円</td></tr>
-            <tr><td>ねぎそば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,000円</td></tr>
-            <tr><td>おろし肉そば<span class="note">朝打ち自家製麺（1人前）</span></td><td>1,000円</td></tr>
           </tbody>
         </table>
       </div>
@@ -147,13 +153,29 @@
           <span class="menu-block__bar"></span>
           <span class="menu-block__en">DONBURI</span>
         </div>
-        <table class="menu-table">
-          <tbody>
-            <tr><td>天丼<span class="note">ミニ丼、香の物付き／お米は「いのちの壱」</span></td><td>550円</td></tr>
-            <tr><td>牛丼<span class="note">ミニ丼、香の物付き／お米は「いのちの壱」</span></td><td>550円</td></tr>
-            <tr><td>ネギトロ丼<span class="note">ミニ丼、香の物付き／お米は「いのちの壱」</span></td><td>550円</td></tr>
-          </tbody>
-        </table>
+        <div class="cards cards--big">
+          <article class="card">
+            <img src="../assets/img/photo/tendon.jpg" alt="天丼" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">天丼</h3>
+              <p class="card__price">550円 <span>税込</span></p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="../assets/img/photo/gyudon.jpg" alt="牛丼" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">牛丼</h3>
+              <p class="card__price">550円 <span>税込</span></p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="../assets/img/photo/negitoro-don.jpg" alt="ネギトロ丼" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">ネギトロ丼</h3>
+              <p class="card__price">550円 <span>税込</span></p>
+            </div>
+          </article>
+        </div>
       </div>
 
       <div class="menu-block" id="side">
@@ -162,11 +184,26 @@
           <span class="menu-block__bar"></span>
           <span class="menu-block__en">SIDE</span>
         </div>
+        <div class="cards cards--big">
+          <article class="card">
+            <img src="../assets/img/photo/toriten.jpg" alt="とり天" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">とり天（5個）</h3>
+              <p class="card__price">450円 <span>税込</span></p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="../assets/img/photo/agedashi-tofu.jpg" alt="揚出し豆腐" loading="lazy">
+            <div class="card__body">
+              <h3 class="card__name">揚出し豆腐</h3>
+              <p class="card__price">400円 <span>税込</span></p>
+            </div>
+          </article>
+        </div>
+        <p class="rest-label">ほかの一品</p>
         <table class="menu-table">
           <tbody>
-            <tr><td>とり天（5個）<span class="tag tag--navy">お持ち帰り可</span></td><td>450円</td></tr>
             <tr><td>とり天（2個）<span class="tag tag--navy">お持ち帰り可</span></td><td>300円</td></tr>
-            <tr><td>揚出し豆腐</td><td>400円</td></tr>
             <tr><td>天ぷら盛り合わせ<span class="tag tag--navy">お持ち帰り可</span><span class="note">大海老二尾・南瓜・ししとう・海苔</span></td><td>900円</td></tr>
             <tr><td>大海老天（一尾）<span class="tag tag--navy">お持ち帰り可</span></td><td>350円</td></tr>
             <tr><td>だし巻き玉子</td><td>300円</td></tr>
@@ -212,7 +249,6 @@
         <li>そば粉は島根県三瓶在来種を使用し、毎朝この店で打っています。</li>
         <li>丼もののお米は「いのちの壱」を使用しています。</li>
         <li>ご予約は承っておりません。先着順でのご案内となります。</li>
-        <li>価格は店内掲示（2026年8月）をもとにしています。掲示にない一部のお品は確認中です。</li>
       </ul>
 
       <p class="center"><a class="btn btn--primary" href="access.html">アクセス・営業時間を見る</a></p>
@@ -239,7 +275,7 @@
       <a href="access.html">アクセス・営業時間</a>
     </nav>
   </div>
-  <p class="footer__copy">© そばこころ　※本サイトはデザイン確認用のサンプルです</p>
+  <p class="footer__copy">© そばこころ</p>
 </footer>
 
 <div class="sp-cta">

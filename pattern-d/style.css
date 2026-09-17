@@ -298,6 +298,25 @@ body {
 .card__price span { font-size: .8rem; color: var(--gray); font-weight: 500; }
 .card__text { font-size: .97rem; line-height: 1.95; color: var(--ink-soft); text-wrap: pretty; }
 
+/* お品書きで使う、写真のある品のカード。
+   1〜2枚しかない区分でも間延びしないよう、トラックに上限幅を持たせている */
+.cards--big {
+  display: grid; gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(206px, 254px));
+  margin: 0 0 1.3rem;
+}
+.cards--big .card__body { padding: 1rem 1.15rem 1.25rem; }
+.cards--big .card__name { font-size: 1.28rem; line-height: 1.45; }
+.cards--big .card__price { font-size: 1.42rem; margin: .2rem 0 0; }
+@media (max-width: 560px) {
+  .cards--big { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .85rem; }
+  .cards--big .card__body { padding: .8rem .9rem 1rem; }
+  .cards--big .card__name { font-size: 1.08rem; }
+  .cards--big .card__price { font-size: 1.16rem; }
+}
+/* カードで出した品は下の表に載せないので、その区切りを示す小見出し */
+.rest-label { font-size: .92rem; color: var(--gray); margin: 0 0 .55rem .2rem; }
+
 /* ---------- 写真ギャラリー ---------- */
 .gallery {
   display: grid; gap: 1.1rem;
