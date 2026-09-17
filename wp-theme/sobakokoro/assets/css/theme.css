@@ -1,0 +1,537 @@
+/* ============================================================
+   pattern-d 「温」— 店舗の看板（看板用_0810.pdf）のトンマナに合わせた案
+     ・配色  : 若草色の市松＋金箔（看板の背景そのもの）
+     ・見出し: しっぽり明朝 B1 800 ＋白フチ（看板の品名の組み方に倣う）
+     ・本文UI: Zen Kaku Gothic New（ご年配の方の可読性を優先し、本文とボタンはゴシック）
+     ・価格  : 明朝＋白帯（看板の価格表記と同じ）
+     ・写真  : 看板と同じ実店舗の料理写真
+   2026-09-01 MTG の要望（高齢者・ファミリー向け／文字大きめ／情報はトップに集約）は維持
+   ============================================================ */
+
+:root {
+  --washi:      #fbfaf4;  /* 紙 */
+  --washi-warm: #f5f1e4;
+  --white:      #fff;
+  --ink:        #221f1c;
+  --ink-soft:   #4b443d;
+  --gray:       #6d655c;
+  --line:       #e2dccb;
+  /* 表・定義リストの見出し列。--washi-warm のままだと、同じ色のセクション背景に
+     置いたとき左端の境界が消えてしまうので一段濃くしてある（2026-09-17） */
+  --head-cell:  #ece5d3;
+
+  --green:      #6f9a3a;  /* 看板の若草 */
+  --green-dk:   #4e7326;
+  --green-pale: #dcebbd;
+  --gold:       #b8912f;
+  --alert-bg:   #f3f7e8;
+
+  --r:    14px;
+  --r-sm: 8px;
+
+  --sans:   "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --mincho: "Shippori Mincho B1", "Yu Mincho", "Hiragino Mincho ProN", serif;
+
+  --wrap: 1080px;
+}
+
+html { font-size: 17px; }
+
+body {
+  font-family: var(--sans);
+  font-size: 1.02rem;
+  color: var(--ink);
+  background: var(--washi);
+  line-height: 2;
+  letter-spacing: .03em;
+}
+
+.wrap { width: min(100% - 2.4rem, var(--wrap)); margin-inline: auto; }
+.center { text-align: center; }
+
+.section { padding-block: clamp(3rem, 6vw, 4.75rem); }
+.section--soft { background: var(--washi-warm); }
+
+/* 看板と同じ市松（実素材をタイル）。
+   面積が大きく色みが強すぎたため、生成りのベールを重ねて主張を弱めている（2026-09-17）。
+   ページ見出しの帯（.page-head--washi）は面積が小さくアクセントとして効くので、そのまま濃い柄を使う */
+.section--ichimatsu {
+  background-image: linear-gradient(rgba(251, 250, 244, .66), rgba(251, 250, 244, .66)),
+                    url(../img/photo/ichimatsu.jpg);
+  background-size: auto, 520px auto;
+  background-position: center, center;
+}
+
+/* 市松の上に文字を直接置くと模様で読みにくいので、看板と同じく白い下地に載せる */
+.section--ichimatsu .section__lead {
+  display: inline-block;
+  background: rgba(255, 255, 255, .93);
+  padding: .6rem 1.5rem;
+  border-radius: var(--r-sm);
+  color: var(--ink);
+}
+.section--ichimatsu .feature > div:not(.feature__img) {
+  background: rgba(255, 255, 255, .94);
+  border-radius: var(--r);
+  padding: clamp(1.3rem, 2.6vw, 1.9rem) clamp(1.3rem, 2.6vw, 1.9rem);
+  box-shadow: 0 2px 12px rgba(60, 55, 30, .08);
+}
+.section--ichimatsu .feature__text { color: var(--ink); }
+
+.section__head { text-align: center; margin-bottom: clamp(2rem, 4vw, 2.75rem); }
+.section__en {
+  display: block; font-size: .78rem; letter-spacing: .28em;
+  color: var(--green-dk); font-weight: 700; margin-bottom: .5rem;
+}
+.section__title {
+  font-family: var(--mincho); font-weight: 800;
+  font-size: clamp(1.7rem, 3.9vw, 2.25rem); line-height: 1.5; letter-spacing: .06em;
+  text-wrap: pretty;
+}
+.section__title::after {
+  content: ""; display: block; width: 2.6rem; height: 4px; border-radius: 2px;
+  background: var(--green); margin: .8rem auto 0;
+}
+.section__lead {
+  margin-top: 1.1rem; font-size: 1.05rem; color: var(--ink-soft); line-height: 2.1;
+  text-wrap: pretty;
+}
+
+/* 看板の品名と同じ、白フチつきの極太文字（明朝は線が細いのでフチは控えめに） */
+.outlined {
+  color: var(--ink);
+  -webkit-text-stroke: .15em var(--white);
+  paint-order: stroke fill;
+}
+
+/* ---------- ボタン ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: 3.4rem; padding: .6rem 2.2rem;
+  border-radius: 999px; font-family: var(--sans); font-weight: 700;
+  font-size: 1.05rem; letter-spacing: .06em;
+  border: 2px solid transparent; transition: background .2s, color .2s, border-color .2s;
+}
+.btn--primary { background: var(--green); color: var(--white); }
+.btn--primary:hover { background: var(--green-dk); }
+.btn--outline { background: var(--white); color: var(--ink); border-color: var(--line); }
+.btn--outline:hover { border-color: var(--green); color: var(--green-dk); }
+.btn--tel { background: var(--ink); color: var(--white); }
+.btn--tel:hover { background: #3b352f; }
+
+/* ---------- 上部インフォメーションバー ---------- */
+.utilbar {
+  background: var(--ink); color: #f2ece1;
+  font-size: .85rem; line-height: 1.7;
+}
+.utilbar__inner {
+  width: min(100% - 2.4rem, var(--wrap)); margin-inline: auto;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding-block: .5rem; flex-wrap: wrap;
+}
+.utilbar__right { display: flex; align-items: center; gap: 1.2rem; }
+.utilbar__tel { font-weight: 700; letter-spacing: .06em; }
+@media (max-width: 767px) { .utilbar__left { display: none; } .utilbar__inner { justify-content: center; } }
+
+/* ---------- ヘッダー ---------- */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(251, 250, 244, .96);
+  backdrop-filter: blur(6px);
+  border-bottom: 3px solid var(--green-pale);
+}
+.header__inner {
+  width: min(100% - 2.4rem, var(--wrap)); margin-inline: auto;
+  display: flex; align-items: center; gap: 1.5rem;
+  padding-block: .7rem;
+}
+.brand { display: flex; flex-direction: column; line-height: 1.25; margin-right: auto; }
+.brand__mark {
+  font-family: var(--mincho); font-weight: 800;
+  font-size: clamp(1.45rem, 3.3vw, 1.8rem); letter-spacing: .1em;
+}
+.brand__sub { font-size: .66rem; letter-spacing: .3em; color: var(--gray); }
+
+.gnav { display: flex; gap: clamp(1rem, 2.4vw, 2rem); }
+.gnav a {
+  font-family: var(--sans); font-weight: 500; font-size: 1.05rem;
+  padding: .35rem 0; border-bottom: 3px solid transparent;
+}
+.gnav a:hover { color: var(--green-dk); }
+.gnav a[aria-current="page"] { border-bottom-color: var(--green); color: var(--green-dk); }
+
+.header__cta {
+  display: inline-flex; align-items: center; min-height: 2.9rem;
+  padding: 0 1.4rem; border-radius: 999px;
+  background: var(--green); color: var(--white);
+  font-family: var(--sans); font-weight: 700; font-size: .98rem;
+}
+.header__cta:hover { background: var(--green-dk); }
+
+@media (max-width: 860px) {
+  .header__cta { display: none; }
+  .header__inner { flex-wrap: wrap; gap: .5rem 1rem; padding-block: .6rem; }
+  .brand { margin-right: 0; width: 100%; align-items: center; }
+  .gnav { width: 100%; justify-content: center; gap: 1.4rem; }
+  .gnav a { font-size: 1rem; }
+}
+
+/* ---------- ヒーロー（看板と同じ組み方） ---------- */
+.hero { position: relative; }
+/* ヒーローは4枚（そば畑・外観・天ざる・手繰った麺）を重ねて順に切り替える。
+   1枚の写真で店を伝えきろうとすると、俯瞰の料理写真は必ず器が切れるか料理が
+   アップになりすぎるため、複数枚に分担させている（2026-09-17）。
+   画像はすべて 2.10:1 に統一。枠も同じ比率にして切り落としを避ける */
+.hero__slides {
+  position: relative;
+  height: clamp(420px, 70vh, 680px);
+}
+/* picture が高さを持たないよう、中の img だけを絶対配置で扱う */
+.hero__slides picture { display: contents; }
+.hero__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 50%;
+  opacity: 0; transition: opacity 1.4s ease;
+}
+.hero__img.is-active { opacity: 1; }
+
+.hero__dots {
+  position: absolute; left: 0; right: 0; bottom: 1.1rem; z-index: 3;
+  display: flex; justify-content: center; gap: .55rem;
+}
+.hero__dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: rgba(255, 255, 255, .5);
+  box-shadow: 0 1px 3px rgba(30, 26, 20, .35);
+  transition: background .4s ease;
+}
+.hero__dot.is-active { background: var(--white); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__img { transition: none; }
+}
+/* 見出しを載せなくなったので暗幕は最小限。
+   下端だけ軽く落として、切り替えのドットが白飛びしないようにしている（2026-09-17） */
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(30,26,20,0) 68%, rgba(30,26,20,.28) 100%);
+}
+.hero__copy {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero__title {
+  font-family: var(--mincho); font-weight: 800;
+  font-size: clamp(2.15rem, 6.2vw, 3.5rem); line-height: 1.5; letter-spacing: .08em;
+}
+.hero__lead {
+  margin-top: 1rem; font-family: var(--mincho); font-weight: 600;
+  font-size: clamp(1rem, 2.4vw, 1.25rem); line-height: 1.9;
+  display: inline-block; align-self: flex-start;
+  background: rgba(255,255,255,.94); color: var(--ink);
+  padding: .5rem 1.4rem; border-radius: var(--r-sm);
+}
+.hero__badge {
+  position: absolute; top: clamp(1rem, 3vw, 2rem); right: clamp(1rem, 3vw, 2rem);
+  z-index: 3; width: clamp(170px, 24vw, 260px);
+  border-radius: var(--r-sm); box-shadow: 0 4px 18px rgba(0,0,0,.2);
+}
+@media (max-width: 560px) {
+  /* 見出しと重なって見えないよう、狭い画面では小さくする */
+  .hero__badge { width: 142px; top: .8rem; right: .8rem; }
+}
+
+/* ---------- お知らせ ---------- */
+.news { background: var(--white); border-bottom: 1px solid var(--line); }
+.news__inner {
+  width: min(100% - 2.4rem, var(--wrap)); margin-inline: auto;
+  display: flex; align-items: center; gap: .9rem; flex-wrap: wrap;
+  padding-block: .9rem; font-size: 1rem;
+}
+.news__label {
+  background: var(--green); color: var(--white);
+  font-family: var(--sans); font-weight: 700; font-size: .85rem;
+  padding: .15rem 1rem; border-radius: 999px; letter-spacing: .1em;
+}
+.news__date { color: var(--gray); font-size: .92rem; font-family: var(--mincho); }
+.news__text a { color: var(--green-dk); text-decoration: underline; font-weight: 700; }
+
+/* ---------- 営業情報の帯（ヒーロー直下・1行に集約） ---------- */
+.hours-bar {
+  background: var(--washi-warm);
+  border-bottom: 1px solid var(--line);
+}
+.hours-bar__inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: .3rem 2.2rem; padding-block: 1.15rem;
+  font-size: 1.05rem; line-height: 1.7; text-align: center;
+}
+.hours-bar strong {
+  font-family: var(--mincho); font-weight: 600; font-size: 1.22rem; color: var(--ink);
+}
+.hours-bar a {
+  font-family: var(--mincho); font-weight: 600; font-size: 1.22rem;
+  color: var(--green-dk); letter-spacing: .02em;
+}
+@media (max-width: 640px) {
+  .hours-bar__inner { flex-direction: column; gap: .35rem; padding-block: 1rem; }
+}
+
+/* ---------- こだわり ---------- */
+.feature {
+  display: grid; gap: clamp(1.4rem, 3vw, 2.6rem); align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  margin-bottom: clamp(2.2rem, 4.5vw, 3.2rem);
+}
+.feature:last-child { margin-bottom: 0; }
+.feature--reverse .feature__img { order: 2; }
+.feature__img img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: var(--r); border: 4px solid var(--white);
+  box-shadow: 0 3px 14px rgba(60, 55, 30, .1);
+}
+.feature__img--badge img {
+  aspect-ratio: auto; border: none; box-shadow: none;
+  max-width: 420px; margin-inline: auto;
+  border-radius: var(--r-sm);
+}
+.feature__num {
+  display: inline-block; font-family: var(--sans); font-weight: 700;
+  font-size: .9rem; letter-spacing: .16em; color: var(--white);
+  background: var(--green); border-radius: 999px; padding: .1rem 1rem;
+  margin-bottom: .8rem;
+}
+.feature__title {
+  font-family: var(--mincho); font-weight: 800;
+  font-size: clamp(1.35rem, 3vw, 1.75rem); line-height: 1.6; margin-bottom: .6rem;
+  text-wrap: pretty; /* balance は「さんべ」のように語の途中で割れるため使わない */
+}
+.feature__text { font-size: 1.02rem; line-height: 2.05; color: var(--ink-soft); text-wrap: pretty; }
+@media (max-width: 767px) {
+  .feature { grid-template-columns: 1fr; }
+  .feature--reverse .feature__img { order: 0; }
+}
+
+/* ---------- お品書きカード（看板と同じ「白帯に明朝の価格」） ---------- */
+.cards {
+  display: grid; gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-bottom: clamp(2rem, 4vw, 2.8rem);
+}
+.card {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--r);
+  overflow: hidden; box-shadow: 0 2px 10px rgba(60, 55, 30, .06);
+}
+.card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.card__body { padding: 1.2rem 1.3rem 1.5rem; }
+.card__name {
+  font-family: var(--mincho); font-weight: 800; font-size: 1.45rem; line-height: 1.5;
+}
+.card__price {
+  font-family: var(--mincho); font-weight: 600; font-size: 1.6rem;
+  color: var(--ink); margin: .2rem 0 .5rem;
+}
+.card__price span { font-size: .8rem; color: var(--gray); font-weight: 500; }
+.card__text { font-size: .97rem; line-height: 1.95; color: var(--ink-soft); text-wrap: pretty; }
+
+/* お品書きで使う、写真のある品のカード。
+   1〜2枚しかない区分でも間延びしないよう、トラックに上限幅を持たせている */
+.cards--big {
+  display: grid; gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(206px, 254px));
+  margin: 0 0 1.3rem;
+}
+.cards--big .card__body { padding: 1rem 1.15rem 1.25rem; }
+.cards--big .card__name { font-size: 1.28rem; line-height: 1.45; }
+.cards--big .card__price { font-size: 1.42rem; margin: .2rem 0 0; }
+@media (max-width: 560px) {
+  .cards--big { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .85rem; }
+  .cards--big .card__body { padding: .8rem .9rem 1rem; }
+  .cards--big .card__name { font-size: 1.08rem; }
+  .cards--big .card__price { font-size: 1.16rem; }
+}
+/* カードで出した品は下の表に載せないので、その区切りを示す小見出し */
+.rest-label { font-size: .92rem; color: var(--gray); margin: 0 0 .55rem .2rem; }
+
+/* ---------- 写真ギャラリー ---------- */
+.gallery {
+  display: grid; gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-bottom: clamp(1.8rem, 4vw, 2.5rem);
+}
+.gallery img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r);
+  border: 4px solid var(--white); box-shadow: 0 3px 14px rgba(60, 55, 30, .1);
+}
+.gallery figcaption {
+  margin-top: .5rem; text-align: center; font-size: .92rem; color: var(--gray);
+}
+
+/* ---------- フッター ---------- */
+.footer { background: var(--ink); color: #ece5d9; padding-top: clamp(2.4rem, 5vw, 3.4rem); }
+.footer__inner {
+  display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  padding-bottom: 2rem;
+}
+.footer__brand {
+  font-family: var(--mincho); font-weight: 800; font-size: 1.6rem;
+  letter-spacing: .1em; margin-bottom: .7rem;
+}
+.footer__addr { font-size: .97rem; line-height: 2.05; }
+.footer__addr a { color: #bcd98a; font-weight: 700; }
+.footer__nav { display: flex; flex-direction: column; gap: .55rem; }
+.footer__nav a { font-family: var(--sans); font-size: 1.02rem; }
+.footer__nav a:hover { color: #bcd98a; }
+.footer__copy {
+  border-top: 1px solid rgba(255,255,255,.16); text-align: center;
+  padding-block: 1.1rem; font-size: .82rem; color: #b3aa9d;
+}
+
+/* ---------- スマホ固定CTA ---------- */
+.sp-cta a { background: var(--green); color: var(--white); font-size: 1.02rem; }
+.sp-cta a + a { background: var(--ink); border-left: 1px solid rgba(255,255,255,.25); }
+
+/* ============================================================
+   下層ページ（お品書き／アクセス）
+   ============================================================ */
+
+.page-head { position: relative; }
+.page-head img { width: 100%; height: clamp(190px, 27vh, 270px); object-fit: cover; }
+.page-head::after { content: ""; position: absolute; inset: 0; background: rgba(30,26,20,.42); }
+.page-head__text {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: var(--white); text-align: center;
+}
+.page-head__en { font-size: .78rem; letter-spacing: .3em; margin-bottom: .3rem; }
+.page-head__ja {
+  font-family: var(--mincho); font-weight: 800;
+  font-size: clamp(1.85rem, 4.7vw, 2.55rem); letter-spacing: .12em;
+}
+
+/* 写真を使わない見出し帯（看板の市松をそのまま敷く） */
+.page-head--washi {
+  background-image: url(../img/photo/ichimatsu.jpg);
+  background-size: 520px auto;
+  min-height: clamp(170px, 22vh, 230px);
+  display: flex; align-items: center;
+}
+.page-head--washi::after { display: none; }
+.page-head--washi .page-head__text { position: static; color: var(--ink); width: 100%; }
+.page-head--washi .page-head__en { color: var(--green-dk); font-weight: 700; }
+.page-head--washi .page-head__ja {
+  -webkit-text-stroke: .16em var(--white); paint-order: stroke fill;
+}
+
+.crumb { padding-block: 1rem; font-size: .92rem; color: var(--gray); }
+.crumb a { color: var(--green-dk); text-decoration: underline; }
+
+/* ---------- お品書き ---------- */
+.menu-jump {
+  display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center;
+  margin-bottom: clamp(2rem, 4vw, 2.8rem);
+}
+.menu-jump a {
+  display: inline-flex; align-items: center; min-height: 2.9rem;
+  padding: 0 1.3rem; border-radius: 999px;
+  background: var(--white); border: 1px solid var(--line);
+  font-family: var(--sans); font-weight: 500; font-size: 1rem;
+}
+.menu-jump a:hover { border-color: var(--green); color: var(--green-dk); }
+
+.menu-block { margin-bottom: clamp(2.4rem, 5vw, 3.4rem); scroll-margin-top: 6rem; }
+.menu-block__head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.menu-block__title {
+  font-family: var(--mincho); font-weight: 800;
+  font-size: clamp(1.45rem, 3.1vw, 1.8rem); white-space: nowrap; letter-spacing: .06em;
+}
+.menu-block__bar { flex: 1; height: 3px; background: var(--green-pale); }
+.menu-block__en { font-size: .74rem; letter-spacing: .22em; color: var(--green-dk); font-weight: 700; }
+
+.menu-table { background: var(--white); border-radius: var(--r); overflow: hidden; }
+.menu-table td {
+  padding: 1.05rem 1.3rem; border-bottom: 1px solid var(--line);
+  font-size: 1.12rem; line-height: 1.7; vertical-align: top;
+}
+.menu-table tr:last-child td { border-bottom: none; }
+.menu-table td:last-child {
+  text-align: right; white-space: nowrap;
+  font-family: var(--mincho); font-weight: 600; font-size: 1.3rem; color: var(--ink);
+}
+@media (max-width: 520px) {
+  /* 狭い画面では価格列を少し詰めて、品名と注記の幅を確保する */
+  .menu-table td { padding-inline: 1rem; font-size: 1.06rem; }
+  .menu-table td:last-child { font-size: 1.15rem; padding-left: .4rem; }
+}
+.menu-table .note {
+  display: block; font-size: .95rem; color: var(--gray);
+  line-height: 1.8; margin-top: .15rem; text-wrap: pretty;
+}
+/* 品名の横に出る小さなラベル。価格表でも写真付きカードでも使う */
+.tag {
+  display: inline-block; margin-left: .6rem; vertical-align: middle;
+  background: var(--green); color: var(--white);
+  font-size: .78rem; font-weight: 700; letter-spacing: .06em;
+  padding: .1rem .8rem; border-radius: 999px;
+}
+.tag--navy { background: var(--gold); }
+.tag--check { background: var(--white); color: var(--gray); border: 1px dashed var(--gray); }
+
+/* カードでは品名の横に置くと折り返して高さが揃わなくなるので、写真の左上に重ねる */
+.cards--big .card { position: relative; }
+.cards--big .card__badge {
+  position: absolute; top: .7rem; left: .7rem; z-index: 1; margin-left: 0;
+  box-shadow: 0 1px 6px rgba(30, 26, 20, .3);
+}
+
+.notice {
+  background: var(--washi-warm); border-radius: var(--r);
+  padding: 1.3rem 1.6rem; margin-bottom: clamp(1.8rem, 4vw, 2.4rem);
+}
+.notice li {
+  position: relative; padding-left: 1.3em; font-size: .98rem; line-height: 1.95;
+  color: var(--ink-soft); text-wrap: pretty;
+}
+.notice li::before { content: "・"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+/* ---------- アクセス ---------- */
+.hours-table {
+  background: var(--white); border-radius: var(--r); overflow: hidden;
+  border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(60, 55, 30, .06);
+}
+.hours-table th, .hours-table td {
+  padding: 1.05rem 1.3rem; border-bottom: 1px solid var(--line);
+  font-size: 1.08rem; text-align: left;
+}
+.hours-table thead th { background: var(--ink); color: var(--white); font-family: var(--sans); }
+.hours-table tbody th { width: 34%; font-family: var(--sans); font-weight: 700; background: var(--head-cell); }
+.hours-table tr:last-child th, .hours-table tr:last-child td { border-bottom: none; }
+.hours-table em { font-style: normal; color: var(--green-dk); font-weight: 700; }
+
+.access-grid {
+  display: grid; gap: clamp(1.6rem, 3.5vw, 2.6rem);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+.map { border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); }
+.map iframe { width: 100%; height: clamp(280px, 42vh, 380px); border: 0; display: block; }
+.map-links { display: flex; gap: .9rem; flex-wrap: wrap; margin-top: 1.1rem; }
+
+.info-list {
+  background: var(--white); border-radius: var(--r); overflow: hidden;
+  border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(60, 55, 30, .06);
+}
+.info-list > div {
+  display: grid; grid-template-columns: 8.5rem 1fr; border-bottom: 1px solid var(--line);
+}
+.info-list > div:last-child { border-bottom: none; }
+.info-list dt {
+  background: var(--head-cell); padding: .95rem 1.1rem;
+  font-family: var(--sans); font-weight: 700; font-size: 1rem;
+}
+.info-list dd { padding: .95rem 1.2rem; font-size: 1.02rem; line-height: 1.9; }
+.info-list dd a { color: var(--green-dk); font-weight: 700; }
+@media (max-width: 520px) {
+  .info-list > div { grid-template-columns: 1fr; }
+  .info-list dt { padding-block: .55rem; }
+}
