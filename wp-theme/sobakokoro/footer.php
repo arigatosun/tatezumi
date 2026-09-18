@@ -15,10 +15,15 @@ $sobakokoro_access_url = sobakokoro_page_url('access');
   <div class="wrap footer__inner">
     <div>
       <p class="footer__brand">そばこころ</p>
+      <?php
+      // 住所は全角スペース区切り（町名＋番地／建物名）。狭い画面ではその位置で折り返し、
+      // 「松尾台」と「1-2-1」のように番地が割れないようにする
+      $sobakokoro_addr_parts = array_filter(explode('　', sobakokoro_shop('address')));
+      ?>
       <p class="footer__addr">
-        <?php echo esc_html(sobakokoro_shop('postal') . '　' . sobakokoro_shop('address')); ?><br>
+        <?php echo esc_html(sobakokoro_shop('postal')); ?><?php foreach ($sobakokoro_addr_parts as $sobakokoro_part) : ?><span class="br-sp"><?php echo esc_html($sobakokoro_part); ?></span><?php endforeach; ?><br>
         TEL <a href="tel:<?php echo esc_attr(sobakokoro_tel_link()); ?>"><?php echo esc_html(sobakokoro_shop('tel')); ?></a><br>
-        <?php echo esc_html(sobakokoro_shop('hours') . '（' . sobakokoro_shop('lo') . '）'); ?><br>
+        <span class="hours-time"><?php echo esc_html(sobakokoro_shop('hours')); ?></span><span class="hours-lo">（<?php echo esc_html(sobakokoro_shop('lo')); ?>）</span><br>
         定休 <?php echo esc_html(sobakokoro_shop('closed')); ?>
       </p>
     </div>

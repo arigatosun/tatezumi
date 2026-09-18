@@ -38,17 +38,17 @@ $sobakokoro_news       = get_posts(['posts_per_page' => 1]);
         $wide = esc_url($sobakokoro_img_dir . $slide['file'] . '.jpg');
         $tall = esc_url($sobakokoro_img_dir . $slide['file'] . '-sp.jpg');
         ?>
-        <picture>
-          <?php if ($i === 0) : ?>
+        <?php if ($i === 0) : ?>
+          <picture>
             <source media="(max-width: 640px)" srcset="<?php echo $tall; ?>">
             <img class="hero__img is-active" src="<?php echo $wide; ?>"
                  alt="<?php echo esc_attr($slide['alt']); ?>" fetchpriority="high">
-          <?php else : ?>
-            <source media="(max-width: 640px)" data-srcset="<?php echo $tall; ?>">
-            <img class="hero__img" data-src="<?php echo $wide; ?>"
-                 alt="<?php echo esc_attr($slide['alt']); ?>" aria-hidden="true">
-          <?php endif; ?>
-        </picture>
+          </picture>
+        <?php else : ?>
+          <?php // 2枚目以降はスマホでは使わない（縦枠だと器が切れて構図が成立しないため） ?>
+          <img class="hero__img" data-src="<?php echo $wide; ?>"
+               alt="<?php echo esc_attr($slide['alt']); ?>" aria-hidden="true">
+        <?php endif; ?>
       <?php endforeach; ?>
     </div>
 
@@ -73,14 +73,7 @@ $sobakokoro_news       = get_posts(['posts_per_page' => 1]);
     </div>
   <?php endif; ?>
 
-  <div class="hours-bar">
-    <div class="wrap hours-bar__inner">
-      <span><strong><?php echo esc_html(sobakokoro_shop('hours')); ?></strong>（<?php echo esc_html(sobakokoro_shop('lo')); ?>）</span>
-      <span>定休 <strong><?php echo esc_html(sobakokoro_shop('closed')); ?></strong></span>
-      <span><?php echo esc_html(sobakokoro_shop('place')); ?></span>
-      <a href="tel:<?php echo esc_attr(sobakokoro_tel_link()); ?>">☎ <?php echo esc_html(sobakokoro_shop('tel')); ?></a>
-    </div>
-  </div>
+  <?php get_template_part('template-parts/hours-bar'); ?>
 
   <section class="section section--ichimatsu">
     <div class="wrap">
@@ -95,19 +88,24 @@ $sobakokoro_news       = get_posts(['posts_per_page' => 1]);
       $sobakokoro_crafts = [
           [
               // 産地のイメージ写真（当店の契約農家の畑ではないため、本文でも産地の説明に留めている）
-              'img'   => 'buckwheat-field.jpg',
-              'alt'   => '朝霧の立つそば畑',
-              'num'   => '01',
-              'title' => '島根県三瓶（さんべ）在来種のそば粉',
-              'text'  => 'そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。',
+              'img'        => 'buckwheat-field.jpg',
+              'alt'        => '島根県三瓶の在来種を育てるそば畑',
+              'num'        => '01',
+              // 産地と品目で切る。PC でも2行にしたいので always（自動任せだと括弧の途中で割れる）
+              'title'       => '島根県三瓶（さんべ）',
+              'title_tail'  => '在来種のそば粉',
+              'title_break' => 'always',
+              'text'       => 'そば粉は島根県三瓶の在来種を使っています。小粒で香りが高く、甘みの濃い希少な在来種です。',
           ],
           [
               // 実際の自家製麺。天ざるの原本から麺だけを切り出したもの
-              'img'   => 'homemade-noodles.jpg',
-              'alt'   => '朝打ちの自家製麺',
-              'num'   => '02',
-              'title' => '毎朝この店で打つ、自家製麺',
-              'text'  => 'お蕎麦は毎朝、この店で打っています。打ちたてならではの香りと喉ごしを、ぜひそのまま召し上がってください。',
+              'img'        => 'homemade-noodles.jpg',
+              'alt'        => '朝打ちの自家製麺',
+              'num'        => '02',
+              // 狭い画面では読点のあとで折り返したいので、後半を分けてある
+              'title'      => '毎朝この店で打つ、',
+              'title_tail' => '自家製麺',
+              'text'       => 'お蕎麦は毎朝、この店で打っています。打ちたてならではの香りと喉ごしを、ぜひそのまま召し上がってください。',
           ],
           [
               'img'   => 'badge-okome.png',
@@ -128,7 +126,8 @@ $sobakokoro_news       = get_posts(['posts_per_page' => 1]);
           </div>
           <div>
             <span class="feature__num"><?php echo esc_html($craft['num']); ?></span>
-            <h3 class="feature__title"><?php echo esc_html($craft['title']); ?></h3>
+            <?php $sobakokoro_br = (($craft['title_break'] ?? '') === 'always') ? 'br-always' : 'br-sp'; ?>
+            <h3 class="feature__title"><?php echo esc_html($craft['title']); ?><?php if (!empty($craft['title_tail'])) : ?><span class="<?php echo esc_attr($sobakokoro_br); ?>"><?php echo esc_html($craft['title_tail']); ?></span><?php endif; ?></h3>
             <p class="feature__text"><?php echo esc_html($craft['text']); ?></p>
           </div>
         </div>
@@ -146,7 +145,7 @@ $sobakokoro_news       = get_posts(['posts_per_page' => 1]);
     <div class="wrap">
       <div class="section__head">
         <span class="section__en">SHOP</span>
-        <h2 class="section__title">明るい店内で、ゆっくりと</h2>
+        <h2 class="section__title">明るい店内で、<span class="br-sp">ゆっくりと</span></h2>
         <p class="section__lead">テーブル席の広々とした店内です。<br>おひとりのお昼にも、ご家族でのお食事にも。</p>
       </div>
       <div class="gallery">

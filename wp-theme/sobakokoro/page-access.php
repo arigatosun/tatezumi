@@ -42,7 +42,10 @@ $sobakokoro_menu_url  = sobakokoro_page_url('menu');
           <tbody>
             <tr>
               <th>月〜日・祝</th>
-              <td><?php echo esc_html(sobakokoro_shop('hours') . '（' . sobakokoro_shop('lo') . '）'); ?></td>
+              <td>
+                <?php // 折り返すときは必ず「（L.O. …）」の前で切れるよう、ひとまとまりにしてある ?>
+                <span class="hours-time"><?php echo esc_html(sobakokoro_shop('hours')); ?></span><span class="hours-lo">（<?php echo esc_html(sobakokoro_shop('lo')); ?>）</span>
+              </td>
             </tr>
             <tr>
               <th>定休日</th>

@@ -23,23 +23,10 @@ $sobakokoro_logo_id    = (int) get_theme_mod('custom_logo');
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<div class="utilbar">
-  <div class="utilbar__inner">
-    <span class="utilbar__left">
-      <?php echo esc_html(sobakokoro_shop('postal') . '　' . sobakokoro_shop('address')); ?>
-      <?php if (sobakokoro_shop('parking') !== '') : ?>
-        ／<?php echo esc_html(sobakokoro_shop('parking')); ?>
-      <?php endif; ?>
-    </span>
-    <span class="utilbar__right">
-      <span><?php echo esc_html(sobakokoro_shop('hours') . '　' . sobakokoro_shop('lo')); ?></span>
-      <a class="utilbar__tel" href="tel:<?php echo esc_attr(sobakokoro_tel_link()); ?>">
-        <?php echo esc_html(sobakokoro_shop('tel')); ?>
-      </a>
-    </span>
-  </div>
-</div>
-
+<?php
+// ここにあった細い帯（住所・営業時間・電話）は、定休日が入らず文字も小さいため廃止した。
+// 同じ役割は template-parts/hours-bar.php が担い、各ページの見出し直下に出す（2026-09-18）
+?>
 <header class="header">
   <div class="header__inner">
     <a class="brand" href="<?php echo esc_url(home_url('/')); ?>">

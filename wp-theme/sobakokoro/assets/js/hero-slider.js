@@ -18,6 +18,12 @@
       return;
     }
 
+    // スマホは枠が縦長で、2枚目以降（外観・天ざる・麺）は器が切れて構図が成立しない。
+    // 縦構図を用意してある1枚目だけを出し、切り替えも追加の読み込みもしない
+    if (window.matchMedia('(max-width: 640px)').matches) {
+      return;
+    }
+
     // 2枚目以降をここで読み込む。
     // スマホ用の source を先に有効にしてから img の src を入れる（順番が逆だと横長の方を取りに行く）
     Array.prototype.forEach.call(slides, function (img) {
