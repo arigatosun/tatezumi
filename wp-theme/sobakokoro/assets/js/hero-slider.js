@@ -11,16 +11,15 @@
   var INTERVAL = 4000;
 
   function init() {
-    var slides = document.querySelectorAll('.hero__img');
-    var dots = document.querySelectorAll('.hero__dot');
+    // スマホ専用の1枚（購入したストック写真）は、PCでは器が実物と違って浮くので使わない
+    var isNarrow = window.matchMedia('(max-width: 640px)').matches;
+    var selector = isNarrow ? '.hero__img' : '.hero__img:not(.is-sp-only)';
+    var dotSelector = isNarrow ? '.hero__dot' : '.hero__dot:not(.is-sp-only)';
+
+    var slides = document.querySelectorAll(selector);
+    var dots = document.querySelectorAll(dotSelector);
 
     if (slides.length < 2) {
-      return;
-    }
-
-    // スマホは枠が縦長で、2枚目以降（外観・天ざる・麺）は器が切れて構図が成立しない。
-    // 縦構図を用意してある1枚目だけを出し、切り替えも追加の読み込みもしない
-    if (window.matchMedia('(max-width: 640px)').matches) {
       return;
     }
 

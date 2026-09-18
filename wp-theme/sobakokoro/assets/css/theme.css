@@ -194,12 +194,13 @@ body {
 }
 .hero__dot.is-active { background: var(--white); }
 
-/* スマホは1枚目で固定する。切り替えのドットは出さず、
-   読み込まない2枚目以降は要素ごと隠す（src が空のまま残さない） */
-@media (max-width: 640px) {
-  .hero__dots { display: none; }
-  .hero__img:not(.is-active) { display: none; }
+/* スマホ専用のスライド（購入したストック写真）は、PCでは出さない。
+   器も箸も実物と違うので、実写の天ざると並ぶと別の店に見えるため */
+@media (min-width: 641px) {
+  .hero__img.is-sp-only,
+  .hero__dot.is-sp-only { display: none; }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .hero__img { transition: none; }

@@ -21,13 +21,17 @@ $sobakokoro_news       = get_posts(['posts_per_page' => 1]);
 <main>
 
   <?php
-  // ヒーローは4枚を順に切り替える。1枚目だけ先に読み込み、残りは hero-slider.js が読む。
-  // スマホは枠が縦長になり、横長の写真だと中央3割しか映らないため、縦構図の版を別に用意している
+  // ヒーローは順に切り替える。1枚目だけ先に読み込み、残りは hero-slider.js が読む。
+  // スマホは枠が縦長になり、横長の写真だと中央3割しか映らないため、縦構図の版（-sp）を別に用意している。
+  //
+  // 4枚目（箸で持ち上げた麺）は購入したストック写真で、器も箸もこの店のものではない。
+  // 横長のPCでは実物の天ざる（3枚目）と並んだときに別の店に見えてしまうため、
+  // スマホだけで使う。縦枠では天ざるの籠が切れてしまい、麺のカットが効くという事情もある。
   $sobakokoro_slides = [
       ['file' => 'hero-1-field',    'alt' => '島根県三瓶の在来種を育てるそば畑'],
       ['file' => 'hero-2-exterior', 'alt' => 'そばこころ 日生中央店の入口。若草色の暖簾がかかる'],
       ['file' => 'hero-3-tenzaru',  'alt' => '天ざる。天ぷらと朝打ちの自家製麺'],
-      ['file' => 'hero-4-noodles',  'alt' => '箸で持ち上げた朝打ちの自家製麺'],
+      ['file' => 'hero-4-noodles',  'alt' => '箸で持ち上げたそば', 'sp_only' => true],
   ];
   $sobakokoro_img_dir = get_template_directory_uri() . '/assets/img/photo/';
   ?>
@@ -35,26 +39,31 @@ $sobakokoro_news       = get_posts(['posts_per_page' => 1]);
     <div class="hero__slides">
       <?php foreach ($sobakokoro_slides as $i => $slide) : ?>
         <?php
-        $wide = esc_url($sobakokoro_img_dir . $slide['file'] . '.jpg');
-        $tall = esc_url($sobakokoro_img_dir . $slide['file'] . '-sp.jpg');
+        $sp_only = !empty($slide['sp_only']);
+        $wide    = esc_url($sobakokoro_img_dir . $slide['file'] . '.jpg');
+        $tall    = esc_url($sobakokoro_img_dir . $slide['file'] . '-sp.jpg');
+        // スマホ専用の1枚は、PCでは読み込まないよう縦版を src にあてる
+        $src     = $sp_only ? $tall : $wide;
         ?>
-        <?php if ($i === 0) : ?>
-          <picture>
+        <picture class="hero__slide<?php echo $sp_only ? ' is-sp-only' : ''; ?>">
+          <?php if ($i === 0) : ?>
             <source media="(max-width: 640px)" srcset="<?php echo $tall; ?>">
             <img class="hero__img is-active" src="<?php echo $wide; ?>"
                  alt="<?php echo esc_attr($slide['alt']); ?>" fetchpriority="high">
-          </picture>
-        <?php else : ?>
-          <?php // 2枚目以降はスマホでは使わない（縦枠だと器が切れて構図が成立しないため） ?>
-          <img class="hero__img" data-src="<?php echo $wide; ?>"
-               alt="<?php echo esc_attr($slide['alt']); ?>" aria-hidden="true">
-        <?php endif; ?>
+          <?php else : ?>
+            <?php if (!$sp_only) : ?>
+              <source media="(max-width: 640px)" data-srcset="<?php echo $tall; ?>">
+            <?php endif; ?>
+            <img class="hero__img<?php echo $sp_only ? ' is-sp-only' : ''; ?>" data-src="<?php echo $src; ?>"
+                 alt="<?php echo esc_attr($slide['alt']); ?>" aria-hidden="true">
+          <?php endif; ?>
+        </picture>
       <?php endforeach; ?>
     </div>
 
     <div class="hero__dots" aria-hidden="true">
       <?php foreach ($sobakokoro_slides as $i => $slide) : ?>
-        <span class="hero__dot<?php echo $i === 0 ? ' is-active' : ''; ?>"></span>
+        <span class="hero__dot<?php echo $i === 0 ? ' is-active' : ''; ?><?php echo !empty($slide['sp_only']) ? ' is-sp-only' : ''; ?>"></span>
       <?php endforeach; ?>
     </div>
 
