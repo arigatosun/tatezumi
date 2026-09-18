@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>そばこころ 日生中央店｜ホームページの更新マニュアル</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Yu Gothic", "Hiragino Sans", "Meiryo", sans-serif;
+    color: #222; line-height: 1.9; font-size: 11pt; margin: 0;
+  }
+  img { max-width: 100%; display: block; }
+
+  /* 表紙 */
+  .cover { text-align: center; padding-top: 60mm; page-break-after: always; }
+  .cover h1 { font-size: 24pt; margin: 0 0 6mm; letter-spacing: .06em; }
+  .cover .sub { font-size: 13pt; color: #555; margin-bottom: 30mm; }
+  .cover .note {
+    display: inline-block; text-align: left; background: #f5f1e4;
+    border-radius: 6px; padding: 8mm 10mm; font-size: 10.5pt; line-height: 2.1;
+  }
+
+  h2 {
+    font-size: 15pt; border-left: 6px solid #6f9a3a; padding-left: 4mm;
+    margin: 0 0 5mm; page-break-after: avoid;
+  }
+  h3 {
+    font-size: 12pt; margin: 8mm 0 3mm; color: #4e7326;
+    page-break-after: avoid;
+  }
+  section { page-break-before: always; }
+  section:first-of-type { page-break-before: avoid; }
+
+  ol { padding-left: 6mm; margin: 0 0 5mm; }
+  ol li { margin-bottom: 3mm; }
+  ul { padding-left: 6mm; }
+
+  figure { margin: 4mm 0 6mm; page-break-inside: avoid; }
+  figure img { border: 1px solid #ccc; border-radius: 4px; }
+  figcaption { font-size: 9.5pt; color: #666; margin-top: 2mm; }
+
+  .tip, .warn {
+    border-radius: 6px; padding: 4mm 5mm; margin: 4mm 0;
+    font-size: 10.5pt; page-break-inside: avoid;
+  }
+  .tip { background: #f3f7e8; border-left: 4px solid #6f9a3a; }
+  .warn { background: #fdf3f0; border-left: 4px solid #c0563a; }
+  .tip b, .warn b { display: block; margin-bottom: 1mm; }
+
+  table { width: 100%; border-collapse: collapse; margin: 4mm 0; font-size: 10.5pt; }
+  th, td { border: 1px solid #ddd; padding: 2.5mm 3mm; text-align: left; vertical-align: top; }
+  th { background: #f5f1e4; width: 32%; }
+
+  .toc li { margin-bottom: 2mm; }
+  code {
+    background: #f2efe6; padding: .5mm 1.5mm; border-radius: 3px;
+    font-family: Consolas, monospace; font-size: 10pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>ホームページの更新マニュアル</h1>
+  <p class="sub">そばこころ 日生中央店</p>
+  <div class="note">
+    このマニュアルでできること<br>
+    ・お品書きの値段を変える<br>
+    ・お品書きに品を足す／写真を入れ替える<br>
+    ・営業時間や定休日を変える<br>
+    ・お知らせを出す
+  </div>
+</div>
+
+<section>
+  <h2>目次</h2>
+  <ol class="toc">
+    <li>ログインする</li>
+    <li>管理画面の見方</li>
+    <li>お品書きの値段を変える</li>
+    <li>お品書きに品を足す</li>
+    <li>写真を入れ替える</li>
+    <li>並び順を変える</li>
+    <li>営業時間・定休日・電話番号を変える</li>
+    <li>お知らせを出す</li>
+    <li>困ったとき</li>
+  </ol>
+
+  <div class="tip">
+    <b>はじめに</b>
+    このマニュアルは、上から順に読む必要はありません。
+    やりたいことのページだけを見てください。
+    いちばんよく使うのは「3. お品書きの値段を変える」と「7. 営業時間・定休日・電話番号を変える」です。
+  </div>
+</section>
+
+<section>
+  <h2>1. ログインする</h2>
+
+  <ol>
+    <li>インターネットを開いて、次の住所を入力します。<br>
+      <code>https://sobakokoro.com/wp-admin/</code></li>
+    <li>ユーザー名とパスワードを入れて、<b>「ログイン」</b>を押します。</li>
+  </ol>
+
+  <figure>
+    <img src="screenshots/01-login.png" alt="ログイン画面">
+    <figcaption>ログイン画面</figcaption>
+  </figure>
+
+  <div class="tip">
+    <b>毎回入力しなくて済むようにする</b>
+    「ログイン状態を保存する」に ✓ を入れておくと、しばらくの間パスワードの入力を省けます。
+    また、この画面をお気に入り（ブックマーク）に入れておくと、次から住所を打たずに開けます。
+  </div>
+
+  <div class="warn">
+    <b>パスワードの取り扱い</b>
+    パスワードは他の人に教えないでください。
+    忘れてしまった場合は、ログイン画面の「パスワードをお忘れですか ?」から再設定できます。
+  </div>
+</section>
+
+<section>
+  <h2>2. 管理画面の見方</h2>
+
+  <p>ログインすると、この画面が出ます。左側のメニューから、やりたいことを選びます。</p>
+
+  <figure>
+    <img src="screenshots/02-dashboard.png" alt="ログイン直後の管理画面">
+    <figcaption>ログイン直後の画面。左のメニューをよく使います</figcaption>
+  </figure>
+
+  <table>
+    <tr><th>お品書き</th><td>値段を変える、品を足す、写真を入れ替える</td></tr>
+    <tr><th>店舗情報</th><td>営業時間・定休日・電話番号・住所を変える</td></tr>
+    <tr><th>投稿</th><td>お知らせを出す</td></tr>
+    <tr><th>メディア</th><td>写真の置き場所（ふだんは使いません）</td></tr>
+  </table>
+
+  <div class="tip">
+    <b>この4つだけ覚えれば大丈夫です</b>
+    ほかの項目（外観・プラグイン・設定など）は、ホームページの作りに関わる部分です。
+    さわる必要はありません。
+  </div>
+</section>
+
+<section>
+  <h2>3. お品書きの値段を変える</h2>
+
+  <ol>
+    <li>左メニューの<b>「お品書き」</b>を押します。全部の品が一覧で出ます。</li>
+    <li>値段を変えたい品の<b>名前</b>を押します。</li>
+  </ol>
+
+  <figure>
+    <img src="screenshots/03-menu-list.png" alt="お品書きの一覧">
+    <figcaption>お品書きの一覧。値段と写真の有無がここで確認できます</figcaption>
+  </figure>
+
+  <ol start="3">
+    <li><b>「価格」</b>の欄を書き換えます。</li>
+    <li>右上の<b>「更新」</b>ボタンを押します。これで完了です。</li>
+  </ol>
+
+  <figure>
+    <img src="screenshots/05-menu-price.png" alt="価格・注記・タグの入力欄">
+    <figcaption>「お品の内容」の欄。価格はここで変えます</figcaption>
+  </figure>
+
+  <div class="warn">
+    <b>値段の入れ方</b>
+    <b>表示したいとおりに入れてください。</b>「円」まで含めて入力します。<br>
+    ○ よい例：<code>1,650円</code> ／ <code>+300円</code> ／ <code>各450円</code> ／ <code>無料</code><br>
+    × 悪い例：<code>1650</code>（「円」がないと、そのまま「1650」と表示されます）
+  </div>
+
+  <h3>注記・タグについて</h3>
+  <table>
+    <tr><th>注記</th><td>品名の下に小さく出る説明です。「紀州鴨使用」など。空でも構いません</td></tr>
+    <tr><th>タグ</th><td>品名の横に出る小さなラベルです。「数量限定」「お持ち帰り可」「夏」から選べます</td></tr>
+  </table>
+
+  <div class="tip">
+    <b>「更新」を押し忘れないでください</b>
+    書き換えただけでは反映されません。必ず右上の青い「更新」ボタンを押してください。
+    押したあと、ホームページを開き直すと変わっています。
+  </div>
+</section>
+
+<section>
+  <h2>4. お品書きに品を足す</h2>
+
+  <ol>
+    <li>左メニューの<b>「お品書き」</b> → <b>「お品を追加」</b>を押します。</li>
+    <li>いちばん上の欄に<b>品名</b>を入れます（例：とろろそば）。</li>
+    <li><b>「価格」</b>を入れます（例：1,100円）。</li>
+    <li>右側の<b>「区分」</b>で、どこに載せるかを選びます。</li>
+    <li>右上の<b>「公開」</b>ボタンを押します。</li>
+  </ol>
+
+  <figure>
+    <img src="screenshots/04-menu-edit.png" alt="お品の編集画面">
+    <figcaption>お品の編集画面。左に内容、右に区分と公開ボタンがあります</figcaption>
+  </figure>
+
+  <h3>区分の選び方</h3>
+
+  <figure>
+    <img src="screenshots/09-menu-category.png" alt="区分の選択欄">
+    <figcaption>区分は必ず1つ選んでください</figcaption>
+  </figure>
+
+  <div class="warn">
+    <b>区分を選び忘れると、どこにも表示されません</b>
+    温かいお蕎麦・冷たいお蕎麦・トッピング・ミニ丼・ちょっと一品・お飲み物・季節のおすすめ
+    のいずれかに ✓ を入れてください。
+  </div>
+</section>
+
+<section>
+  <h2>5. 写真を入れ替える</h2>
+
+  <p>お品の編集画面を下にスクロールすると、右側に<b>「アイキャッチ画像」</b>があります。
+  ここがお品の写真です。</p>
+
+  <figure>
+    <img src="screenshots/06-featured-image.png" alt="アイキャッチ画像のパネル">
+    <figcaption>「アイキャッチ画像」＝そのお品の写真です</figcaption>
+  </figure>
+
+  <ol>
+    <li><b>「アイキャッチ画像を設定」</b>（すでに写真がある場合は写真そのもの）を押します。</li>
+    <li>写真を選ぶ画面が開きます。<b>「ファイルをアップロード」</b>タブから新しい写真を入れるか、
+      <b>「メディアライブラリ」</b>タブからすでにある写真を選びます。</li>
+    <li>右下の<b>「アイキャッチ画像を設定」</b>を押します。</li>
+    <li>最後に右上の<b>「更新」</b>を押します。</li>
+  </ol>
+
+  <figure>
+    <img src="screenshots/07-media-upload.png" alt="写真を選ぶ画面">
+    <figcaption>写真を選ぶ画面。左上のタブで「新しく入れる」「すでにある写真から選ぶ」を切り替えます</figcaption>
+  </figure>
+
+  <div class="tip">
+    <b>写真を入れると、見た目が変わります</b>
+    <b>写真を入れたお品は、大きな写真つきのカードで表示されます。</b>
+    写真を入れていないお品は、値段表の行として表示されます。<br>
+    つまり、目立たせたいお品には写真を入れてください。
+  </div>
+
+  <div class="warn">
+    <b>写真の向きについて</b>
+    ホームページでは写真が<b>横長（4対3）に切り取られて</b>表示されます。
+    料理が真ん中に写っている写真を選ぶと、きれいに収まります。
+  </div>
+</section>
+
+<section>
+  <h2>6. 並び順を変える</h2>
+
+  <p>お品書きの中での並び順は、編集画面の右下にある<b>「順序」</b>の数字で決まります。
+  <b>数字が小さいものほど上に表示されます。</b></p>
+
+  <figure>
+    <img src="screenshots/08-menu-order.png" alt="順序の入力欄">
+    <figcaption>「投稿の属性」の中にある「順序」</figcaption>
+  </figure>
+
+  <ol>
+    <li>上に持っていきたいお品の「順序」を、小さい数字に変えます。</li>
+    <li>右上の<b>「更新」</b>を押します。</li>
+  </ol>
+
+  <div class="tip">
+    <b>数字は10とび、20とびにしておくと後が楽です</b>
+    10・20・30…と間隔をあけておくと、あとから間に入れたいお品が出てきたときに
+    「15」のような数字で割り込ませることができます。
+  </div>
+</section>
+
+<section>
+  <h2>7. 営業時間・定休日・電話番号を変える</h2>
+
+  <p>左メニューの<b>「店舗情報」</b>を押します。</p>
+
+  <figure>
+    <img src="screenshots/10-shop-info.png" alt="店舗情報の設定画面">
+    <figcaption>店舗情報の画面。ここがホームページ全体の元になります</figcaption>
+  </figure>
+
+  <div class="tip">
+    <b>ここを直すと、ホームページ全部に反映されます</b>
+    トップページの帯、ページの下（フッター）、アクセスのページ——
+    <b>電話番号や営業時間が出ているところすべてが、いっぺんに変わります。</b>
+    ページを1枚ずつ直す必要はありません。
+  </div>
+
+  <ol>
+    <li>変えたい欄を書き換えます。</li>
+    <li>いちばん下の<b>「保存する」</b>ボタンを押します。</li>
+  </ol>
+
+  <h3>それぞれの欄の意味</h3>
+  <table>
+    <tr><th>店名</th><td>そばこころ 日生中央店</td></tr>
+    <tr><th>郵便番号・住所</th><td>フッターとアクセスのページに出ます</td></tr>
+    <tr><th>地図で使う住所</th><td>Googleマップ用。<b>建物名や階数を入れると地図の位置がずれる</b>ので、番地までにしています</td></tr>
+    <tr><th>場所の呼び方</th><td>「日生中央サピエ 1階」のように短く言い表す言い方</td></tr>
+    <tr><th>電話番号</th><td>スマホで押すとそのまま電話がかけられます</td></tr>
+    <tr><th>営業時間</th><td>11:00 – 21:00</td></tr>
+    <tr><th>ラストオーダー</th><td>L.O. 20:00</td></tr>
+    <tr><th>定休日</th><td>月曜（月2〜3回）</td></tr>
+    <tr><th>駐車場</th><td>駐車場あり</td></tr>
+  </table>
+
+  <div class="warn">
+    <b>「地図で使う住所」は、むやみに変えないでください</b>
+    この欄はGoogleマップが正しい場所を指すための表記です。
+    建物名や階数を足すと、地図のピンがずれてしまうことがあります。
+  </div>
+</section>
+
+<section>
+  <h2>8. お知らせを出す</h2>
+
+  <p>お知らせは、<b>トップページの上のほうに最新の1件だけ</b>が表示されます。
+  年末年始の休みや、臨時休業のお知らせに使ってください。</p>
+
+  <ol>
+    <li>左メニューの<b>「投稿」</b> → <b>「新規投稿を追加」</b>を押します。</li>
+    <li>いちばん上の<b>「タイトルを追加」</b>の欄に、お知らせの文章を入れます。</li>
+    <li>右上の<b>「公開」</b>を押します。確認が出たらもう一度「公開」を押します。</li>
+  </ol>
+
+  <figure>
+    <img src="screenshots/11-post-new.png" alt="お知らせの新規作成画面">
+    <figcaption>お知らせの作成画面。タイトルだけ入れれば大丈夫です</figcaption>
+  </figure>
+
+  <div class="tip">
+    <b>本文は書かなくて大丈夫です</b>
+    トップページに出るのは<b>タイトルだけ</b>です。<br>
+    例：「年末年始は12月31日から1月3日までお休みします。」<br>
+    このように、タイトルに用件をそのまま書いてください。
+  </div>
+
+  <h3>お知らせを消す・古いものを整理する</h3>
+
+  <figure>
+    <img src="screenshots/12-post-list.png" alt="お知らせの一覧">
+    <figcaption>「投稿」を押すと、これまでのお知らせが一覧で出ます</figcaption>
+  </figure>
+
+  <ol>
+    <li>左メニューの<b>「投稿」</b>を押します。</li>
+    <li>消したいお知らせにマウスを乗せると<b>「ゴミ箱へ移動」</b>が出るので、押します。</li>
+  </ol>
+
+  <div class="tip">
+    <b>新しいお知らせを出せば、古いものは自動で引っ込みます</b>
+    トップページに出るのは常に<b>いちばん新しい1件だけ</b>です。
+    古いお知らせを消さなくても、新しく書けば入れ替わります。
+  </div>
+</section>
+
+<section>
+  <h2>9. 困ったとき</h2>
+
+  <h3>変更したのに、ホームページが変わらない</h3>
+  <ol>
+    <li><b>「更新」または「保存する」を押したか</b>確認してください。押し忘れが最も多い原因です。</li>
+    <li>それでも変わらない場合、パソコンが古い画面を覚えていることがあります。
+      ホームページを開いた状態で<b>キーボードの Ctrl キーを押しながら F5 キー</b>を押してください。</li>
+  </ol>
+
+  <h3>間違えて消してしまった</h3>
+  <p>消したものは<b>ゴミ箱</b>に入っています。すぐには消えません。</p>
+  <ol>
+    <li>「お品書き」または「投稿」の一覧を開きます。</li>
+    <li>上のほうにある<b>「ゴミ箱」</b>を押します。</li>
+    <li>戻したいものにマウスを乗せて<b>「復元」</b>を押します。</li>
+  </ol>
+
+  <h3>お品書きに追加したのに、ホームページに出てこない</h3>
+  <p>次の2つを確認してください。</p>
+  <ul>
+    <li><b>区分</b>を選んでいますか（温かいお蕎麦・ミニ丼 など）</li>
+    <li><b>「公開」</b >を押しましたか（「下書き保存」だけでは表示されません）</li>
+  </ul>
+
+  <h3>写真がぼやける・切れてしまう</h3>
+  <p>ホームページでは写真が横長（4対3）に切り取られます。
+  料理が真ん中に写っている写真を選んでください。
+  また、小さすぎる写真はぼやけます。<b>横幅1200ピクセル以上</b>の写真がおすすめです。</p>
+
+  <h3>それでも解決しないとき</h3>
+  <div class="tip">
+    <b>触ってしまっても、元に戻せます</b>
+    WordPressは変更の履歴を残しています。おかしくなったと思ったら、
+    <b>触らずに制作者へご連絡ください。</b>
+    「何をしたら、どうなったか」を教えていただけると、早く直せます。
+  </div>
+</section>
+
+</body>
+</html>
