@@ -125,10 +125,56 @@ function sobakokoro_resource_hints(array $urls, string $relation): array
 add_filter('wp_resource_hints', 'sobakokoro_resource_hints', 10, 2);
 
 /**
- * 公開前は検索に載せない。公開する時にこの関数ごと外す。
+ * 公開前は検索に載せない。
+ *
+ * wp_head に直接書き出すと WordPress 側の robots タグと二重になるので、
+ * 既存のタグに noindex を足す形にしている。
+ * 公開するときは、この関数と add_filter の2行を消す。
  */
-function sobakokoro_noindex(): void
+function sobakokoro_noindex(array $robots): array
 {
-    echo '<meta name="robots" content="noindex,nofollow">' . "\n";
+    $robots['noindex'] = true;
+    $robots['nofollow'] = true;
+
+    return $robots;
 }
-add_action('wp_head', 'sobakokoro_noindex', 1);
+add_filter('wp_robots', 'sobakokoro_noindex');
+
+/**
+ * 検索結果に出る説明文。
+ *
+ * WordPress は description を自動では出さないので、ページごとに用意する。
+ * 店名は「店舗情報」の設定から取るので、店名を変えれば説明文も追従する。
+ */
+function sobakokoro_meta_description(): void
+{
+    $name = sobakokoro_shop('shop_name');
+    $desc = '';
+
+    if (is_front_page()) {
+        $desc = sprintf(
+            '%s。島根県三瓶在来種のそば粉を使った、朝打ち自家製麺のお店です。%s。営業時間・お品書き・アクセスはこちら。',
+            $name,
+            sobakokoro_shop('place')
+        );
+    } elseif (is_page('menu')) {
+        $desc = sprintf(
+            '%sのお品書き。温かいお蕎麦・冷たいお蕎麦・ミニ丼・ちょっと一品・お飲み物を、写真と価格つきでご案内します（表示はすべて税込）。',
+            $name
+        );
+    } elseif (is_page('access')) {
+        $desc = sprintf(
+            '%sへのアクセスと営業時間。%s（%s）、定休 %s。%s。地図と経路案内はこちら。',
+            $name,
+            sobakokoro_shop('hours'),
+            sobakokoro_shop('lo'),
+            sobakokoro_shop('closed'),
+            sobakokoro_shop('place')
+        );
+    }
+
+    if ($desc !== '') {
+        echo '<meta name="description" content="' . esc_attr($desc) . '">' . "\n";
+    }
+}
+add_action('wp_head', 'sobakokoro_meta_description', 2);
