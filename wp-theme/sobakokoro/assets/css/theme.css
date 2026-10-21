@@ -21,9 +21,10 @@
   --head-cell:  #ece5d3;
 
   --green:      #6f9a3a;  /* 看板の若草 */
-  --green-dk:   #4e7326;
+  --green-dk:   #4e7326;  /* 白文字を載せる面はこちら（若草のままだとコントラスト 3.3:1 で読みにくい） */
+  --green-dkr:  #3d5c1d;
   --green-pale: #dcebbd;
-  --gold:       #b8912f;
+  --gold:       #8a6a1c;
   --alert-bg:   #f3f7e8;
 
   --r:    14px;
@@ -112,8 +113,8 @@ body {
   font-size: 1.05rem; letter-spacing: .06em;
   border: 2px solid transparent; transition: background .2s, color .2s, border-color .2s;
 }
-.btn--primary { background: var(--green); color: var(--white); }
-.btn--primary:hover { background: var(--green-dk); }
+.btn--primary { background: var(--green-dk); color: var(--white); }
+.btn--primary:hover { background: var(--green-dkr); }
 .btn--outline { background: var(--white); color: var(--ink); border-color: var(--line); }
 .btn--outline:hover { border-color: var(--green); color: var(--green-dk); }
 .btn--tel { background: var(--ink); color: var(--white); }
@@ -149,17 +150,24 @@ body {
 .header__cta {
   display: inline-flex; align-items: center; min-height: 2.9rem;
   padding: 0 1.4rem; border-radius: 999px;
-  background: var(--green); color: var(--white);
+  background: var(--green-dk); color: var(--white);
   font-family: var(--sans); font-weight: 700; font-size: .98rem;
 }
-.header__cta:hover { background: var(--green-dk); }
+.header__cta:hover { background: var(--green-dkr); }
 
 @media (max-width: 860px) {
+  /* 上の固定CTAと合わせて画面を狭くしないよう、店名の行（64px）だけスクロールで隠してナビを残す */
+  .header { top: -3.75rem; }
   .header__cta { display: none; }
   .header__inner { flex-wrap: wrap; gap: .5rem 1rem; padding-block: .6rem; }
   .brand { margin-right: 0; width: 100%; align-items: center; }
   .gnav { width: 100%; justify-content: center; gap: 1.4rem; }
-  .gnav a { font-size: 1rem; }
+  .gnav a { font-size: 1rem; white-space: nowrap; }
+}
+/* 375px 幅でもナビ3項目を1行に収める */
+@media (max-width: 400px) {
+  .gnav { gap: .9rem; }
+  .gnav a { font-size: .95rem; }
 }
 
 /* ---------- ヒーロー（看板と同じ組み方） ---------- */
@@ -244,7 +252,7 @@ body {
   padding-block: .9rem; font-size: 1rem;
 }
 .news__label {
-  background: var(--green); color: var(--white);
+  background: var(--green-dk); color: var(--white);
   font-family: var(--sans); font-weight: 700; font-size: .85rem;
   padding: .15rem 1rem; border-radius: 999px; letter-spacing: .1em;
 }
@@ -293,7 +301,7 @@ body {
 .feature__num {
   display: inline-block; font-family: var(--sans); font-weight: 700;
   font-size: .9rem; letter-spacing: .16em; color: var(--white);
-  background: var(--green); border-radius: 999px; padding: .1rem 1rem;
+  background: var(--green-dk); border-radius: 999px; padding: .1rem 1rem;
   margin-bottom: .8rem;
 }
 .feature__title {
@@ -403,7 +411,7 @@ body {
 }
 
 /* ---------- スマホ固定CTA ---------- */
-.sp-cta a { background: var(--green); color: var(--white); font-size: 1.02rem; }
+.sp-cta a { background: var(--green-dk); color: var(--white); font-size: 1.02rem; }
 .sp-cta a + a { background: var(--ink); border-left: 1px solid rgba(255,255,255,.25); }
 
 /* ============================================================
@@ -501,7 +509,7 @@ body {
 /* 品名の横に出る小さなラベル。価格表でも写真付きカードでも使う */
 .tag {
   display: inline-block; margin-left: .6rem; vertical-align: middle;
-  background: var(--green); color: var(--white);
+  background: var(--green-dk); color: var(--white);
   font-size: .78rem; font-weight: 700; letter-spacing: .06em;
   padding: .1rem .8rem; border-radius: 999px;
 }
