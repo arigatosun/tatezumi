@@ -25,7 +25,7 @@ function sobakokoro_menu_sections(): array
         'hot'      => ['name' => '温かいお蕎麦',       'en' => 'HOT',      'nav' => '温かいお蕎麦',   'rest' => 'ほかの温かいお蕎麦'],
         'cold'     => ['name' => '冷たいお蕎麦',       'en' => 'COLD',     'nav' => '冷たいお蕎麦',   'rest' => 'ほかの冷たいお蕎麦'],
         'topping'  => ['name' => 'トッピング・大盛り', 'en' => 'TOPPING',  'nav' => 'トッピング',     'rest' => 'ほかのトッピング'],
-        'donburi'  => ['name' => 'ミニ丼',             'en' => 'DONBURI',  'nav' => 'ミニ丼',         'rest' => 'ほかのミニ丼'],
+        'donburi'  => ['name' => 'ご飯もの',           'en' => 'RICE',     'nav' => 'ご飯もの',       'rest' => 'ほかのご飯もの'],
         'side'     => ['name' => 'ちょっと一品',       'en' => 'SIDE',     'nav' => 'ちょっと一品',   'rest' => 'ほかの一品'],
         'drink'    => ['name' => 'お飲み物',           'en' => 'DRINK',    'nav' => 'お飲み物',       'rest' => 'ほかのお飲み物'],
         'seasonal' => ['name' => '季節のおすすめ',     'en' => 'SEASONAL', 'nav' => '季節のおすすめ', 'rest' => 'ほかの季節のおすすめ'],

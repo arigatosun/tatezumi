@@ -159,7 +159,7 @@ function sobakokoro_meta_description(): void
         );
     } elseif (is_page('menu')) {
         $desc = sprintf(
-            '%sのお品書き。温かいお蕎麦・冷たいお蕎麦・ミニ丼・ちょっと一品・お飲み物を、写真と価格つきでご案内します（表示はすべて税込）。',
+            '%sのお品書き。温かいお蕎麦・冷たいお蕎麦・ご飯もの・ちょっと一品・お飲み物を、写真と価格つきでご案内します（表示はすべて税込）。',
             $name
         );
     } elseif (is_page('access')) {
