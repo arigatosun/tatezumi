@@ -54,10 +54,6 @@ $sobakokoro_logo_id    = (int) get_theme_mod('custom_logo');
       <?php endif; ?>
     </nav>
 
-    <?php if (is_front_page() && $sobakokoro_menu_url !== '') : ?>
-      <a class="header__cta" href="<?php echo esc_url($sobakokoro_menu_url); ?>">お品書きを見る</a>
-    <?php else : ?>
-      <a class="header__cta" href="tel:<?php echo esc_attr(sobakokoro_tel_link()); ?>">電話で確認する</a>
-    <?php endif; ?>
+    <a class="header__cta" href="tel:<?php echo esc_attr(sobakokoro_tel_link()); ?>">電話で確認する</a>
   </div>
 </header>
