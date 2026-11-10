@@ -125,22 +125,6 @@ function sobakokoro_resource_hints(array $urls, string $relation): array
 add_filter('wp_resource_hints', 'sobakokoro_resource_hints', 10, 2);
 
 /**
- * 公開前は検索に載せない。
- *
- * wp_head に直接書き出すと WordPress 側の robots タグと二重になるので、
- * 既存のタグに noindex を足す形にしている。
- * 公開するときは、この関数と add_filter の2行を消す。
- */
-function sobakokoro_noindex(array $robots): array
-{
-    $robots['noindex'] = true;
-    $robots['nofollow'] = true;
-
-    return $robots;
-}
-add_filter('wp_robots', 'sobakokoro_noindex');
-
-/**
  * 検索結果に出る説明文。
  *
  * WordPress は description を自動では出さないので、ページごとに用意する。
