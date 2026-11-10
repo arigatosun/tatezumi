@@ -15,6 +15,7 @@ define('SOBAKOKORO_VERSION', '1.0.0');
 require_once get_template_directory() . '/inc/menu-item.php';
 require_once get_template_directory() . '/inc/menu-item-fields.php';
 require_once get_template_directory() . '/inc/shop-info.php';
+require_once get_template_directory() . '/inc/seo.php';
 
 /**
  * テーマがサポートする機能。
@@ -130,7 +131,7 @@ add_filter('wp_resource_hints', 'sobakokoro_resource_hints', 10, 2);
  * WordPress は description を自動では出さないので、ページごとに用意する。
  * 店名は「店舗情報」の設定から取るので、店名を変えれば説明文も追従する。
  */
-function sobakokoro_meta_description(): void
+function sobakokoro_description(): string
 {
     $name = sobakokoro_shop('shop_name');
     $desc = '';
@@ -156,6 +157,13 @@ function sobakokoro_meta_description(): void
             sobakokoro_shop('place')
         );
     }
+
+    return $desc;
+}
+
+function sobakokoro_meta_description(): void
+{
+    $desc = sobakokoro_description();
 
     if ($desc !== '') {
         echo '<meta name="description" content="' . esc_attr($desc) . '">' . "\n";
