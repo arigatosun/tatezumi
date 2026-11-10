@@ -252,6 +252,10 @@ Higgsfield MCP 経由 Nano Banana Pro（2K）で生成 → ffmpeg で JPEG 化�
 
 **2026-11-10 公開済み。** テーマの `noindex` を外して差し替え、Password Protected は無効、
 表示設定の検索避けもオフ。ログアウト状態で3ページの表示・電話リンク・地図を確認した。
+同日の公開後整備: 不要プラグイン5つ（Filester / Akismet / All-in-One WP Migration / Hello Dolly /
+Password Protected）を削除、CloudSecure WP Security を更新して有効化、コメント・ピンバックを停止、
+管理者メールを `t.koushi@arigatosun.com` に変更、サイトURLを `https://` に変更、OGP・構造化データ・仮ファビコンを追加。
+エックスサーバーの自動バックアップ（Web 14日分・DB）が取れていることも確認した。
 
 ローカル（Local の `sobakokoro`）で作ったものを本番へ移す。**上から順に行う。**
 
@@ -277,6 +281,8 @@ Higgsfield MCP 経由 Nano Banana Pro（2K）で生成 → ffmpeg で JPEG 化�
    お品書き33品と固定ページ2枚が入る。**何度実行しても重複しない**
    （SSH を使わない場合は、管理画面から33品を手で登録する。30分ほどかかる）
 7. **設定 > パーマリンク** を開いて保存（固定ページのURLを確定させる）
+   **WP-CLI で設定するときは Git Bash から `/%postname%/` を渡さない。** パスと誤認されて
+   `/C:/Program Files/Git/%postname%/` に書き換わり、投稿のURLが壊れた（2026-11-10 に管理画面で修正）
 8. **管理画面の「店舗情報」を確認**する。営業時間・電話・住所はここが全ページの元になる
 9. お知らせを1件書く（seed では入らない。トップの帯に最新1件が出る）
 
