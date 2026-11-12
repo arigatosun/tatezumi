@@ -16,6 +16,7 @@ require_once get_template_directory() . '/inc/menu-item.php';
 require_once get_template_directory() . '/inc/menu-item-fields.php';
 require_once get_template_directory() . '/inc/shop-info.php';
 require_once get_template_directory() . '/inc/seo.php';
+require_once get_template_directory() . '/inc/hide-author.php';
 
 /**
  * テーマがサポートする機能。
